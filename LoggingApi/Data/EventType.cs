@@ -2,12 +2,12 @@
 
 namespace Meyer.Logging.Data
 {
-	public class EventType: Entity
+	public class EventType
 	{
 		[Required(AllowEmptyStrings = false)]
 		public string DisplayName { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
-		public string NormalizedName { get; set; }
+		[Key]
+		public string Name { get; set; }
 	}
 }

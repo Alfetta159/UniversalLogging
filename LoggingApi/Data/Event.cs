@@ -4,27 +4,34 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Meyer.Logging.Data
 {
-	public class Event : Entity
+	public class Event
 	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int Id { get; set; }
+
 		[Required(AllowEmptyStrings = false)]
 		public string Description { get; set; }
 
 		[Required]
-		public int EventTypeId { get; set; }
+		public string TypeName { get; set; }
 
-		[ForeignKey("EventTypeId")]
+		[ForeignKey("TypeName")]
 		public EventType Type { get; set; }
 
 		[Required]
-		public Guid ApplicationId { get; set; }
+		public string ApplicationName { get; set; }
 
-		[ForeignKey("ApplicationId")]
+		[ForeignKey("ApplicationName")]
 		public Application Application { get; set; }
 
 		[Required]
-		public int EnvironmentId { get; set; }
+		public string EnvironmentName { get; set; }
 
-		[ForeignKey("EnvironmentId")]
+		[ForeignKey("EnvironmentName")]
 		public OperatingEnvironment Environment { get; set; }
+
+		[Required]
+		public DateTime TimeStamp { get; set; } = DateTime.Now;
 	}
 }

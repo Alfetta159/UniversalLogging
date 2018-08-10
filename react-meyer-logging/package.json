@@ -1,0 +1,20 @@
+{
+  "name": "react-meyer-logging",
+  "version": "1.0.0",
+  "description": "Meyer Universal Logging SDK for React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://potsandpans.visualstudio.com/UniversalLogging/_git/UniversalLogging"
+  },
+  "keywords": [
+    "Meyer",
+    "Logging",
+    "React"
+  ],
+  "author": "Daniel Przybylski",
+  "license": "MIT"
+}

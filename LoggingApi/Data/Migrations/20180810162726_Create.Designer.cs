@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meyer.Logging.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20180809204423_Create")]
+    [Migration("20180810162726_Create")]
     partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,19 +23,13 @@ namespace Meyer.Logging.Data.Migrations
 
             modelBuilder.Entity("Meyer.Logging.Data.Application", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Name")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("DisplayName")
                         .IsRequired();
 
-                    b.Property<string>("NormalizedName")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique();
+                    b.HasKey("Name");
 
                     b.ToTable("Applications");
                 });
@@ -46,62 +40,53 @@ namespace Meyer.Logging.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("ApplicationId");
+                    b.Property<string>("ApplicationName")
+                        .IsRequired();
 
                     b.Property<string>("Description")
                         .IsRequired();
 
-                    b.Property<int>("EnvironmentId");
+                    b.Property<string>("EnvironmentName")
+                        .IsRequired();
 
-                    b.Property<int>("EventTypeId");
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<string>("TypeName")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationId");
+                    b.HasIndex("ApplicationName");
 
-                    b.HasIndex("EnvironmentId");
+                    b.HasIndex("EnvironmentName");
 
-                    b.HasIndex("EventTypeId");
+                    b.HasIndex("TypeName");
 
                     b.ToTable("Events");
                 });
 
             modelBuilder.Entity("Meyer.Logging.Data.EventType", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Name")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("DisplayName")
                         .IsRequired();
 
-                    b.Property<string>("NormalizedName")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique();
+                    b.HasKey("Name");
 
                     b.ToTable("EventTypes");
                 });
 
             modelBuilder.Entity("Meyer.Logging.Data.OperatingEnvironment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Name")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("DisplayName")
                         .IsRequired();
 
-                    b.Property<string>("NormalizedName")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique();
+                    b.HasKey("Name");
 
                     b.ToTable("Environments");
                 });
@@ -110,17 +95,17 @@ namespace Meyer.Logging.Data.Migrations
                 {
                     b.HasOne("Meyer.Logging.Data.Application", "Application")
                         .WithMany()
-                        .HasForeignKey("ApplicationId")
+                        .HasForeignKey("ApplicationName")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Meyer.Logging.Data.OperatingEnvironment", "Environment")
                         .WithMany()
-                        .HasForeignKey("EnvironmentId")
+                        .HasForeignKey("EnvironmentName")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Meyer.Logging.Data.EventType", "Type")
                         .WithMany()
-                        .HasForeignKey("EventTypeId")
+                        .HasForeignKey("TypeName")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

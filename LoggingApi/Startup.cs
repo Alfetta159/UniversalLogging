@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Meyer.Logging.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +34,29 @@ namespace Meyer.Logging
 				.AddDbContext<Context>(options => options.UseSqlServer(connectionstring));
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+			services
+				.AddCors(options =>
+				{
+					options
+						.AddPolicy("MeyerEnterprise", builder => builder
+							.WithOrigins(GetOrigins())
+							.WithMethods("GET", "POST")
+							.WithHeaders("x-meyer-logging"));
+				});
+
+			services.AddScoped<IRepository, Repository>();
+		}
+
+		static string[] GetOrigins()
+		{
+			return new string[]
+			{
+				"https://meyerinfrastructureapidev.azurewebsites.net",
+				"https://meyerinfrastructureclientmvcdev.azurewebsites.net",
+				"https://meyerinfrastructureclientspadev.azurewebsites.net",
+				"https://outletstorerp.azurewebsites.net"
+			};
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +72,7 @@ namespace Meyer.Logging
 				app.UseHsts();
 			}
 
+			app.UseCors("MeyerEnterprise");
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();

@@ -12,41 +12,36 @@ namespace Meyer.Logging.Data.Migrations
                 name: "Applications",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
                     DisplayName = table.Column<string>(nullable: false),
-                    NormalizedName = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Applications", x => x.Id);
+                    table.PrimaryKey("PK_Applications", x => x.Name);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Environments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DisplayName = table.Column<string>(nullable: false),
-                    NormalizedName = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Environments", x => x.Id);
+                    table.PrimaryKey("PK_Environments", x => x.Name);
                 });
 
             migrationBuilder.CreateTable(
                 name: "EventTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DisplayName = table.Column<string>(nullable: false),
-                    NormalizedName = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventTypes", x => x.Id);
+                    table.PrimaryKey("PK_EventTypes", x => x.Name);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,65 +51,48 @@ namespace Meyer.Logging.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: false),
-                    EventTypeId = table.Column<int>(nullable: false),
-                    ApplicationId = table.Column<Guid>(nullable: false),
-                    EnvironmentId = table.Column<int>(nullable: false)
+                    TypeName = table.Column<string>(nullable: false),
+                    ApplicationName = table.Column<string>(nullable: false),
+                    EnvironmentName = table.Column<string>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Events_Applications_ApplicationId",
-                        column: x => x.ApplicationId,
+                        name: "FK_Events_Applications_ApplicationName",
+                        column: x => x.ApplicationName,
                         principalTable: "Applications",
-                        principalColumn: "Id",
+                        principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Events_Environments_EnvironmentId",
-                        column: x => x.EnvironmentId,
+                        name: "FK_Events_Environments_EnvironmentName",
+                        column: x => x.EnvironmentName,
                         principalTable: "Environments",
-                        principalColumn: "Id",
+                        principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Events_EventTypes_EventTypeId",
-                        column: x => x.EventTypeId,
+                        name: "FK_Events_EventTypes_TypeName",
+                        column: x => x.TypeName,
                         principalTable: "EventTypes",
-                        principalColumn: "Id",
+                        principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applications_NormalizedName",
-                table: "Applications",
-                column: "NormalizedName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Environments_NormalizedName",
-                table: "Environments",
-                column: "NormalizedName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Events_ApplicationId",
+                name: "IX_Events_ApplicationName",
                 table: "Events",
-                column: "ApplicationId");
+                column: "ApplicationName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_EnvironmentId",
+                name: "IX_Events_EnvironmentName",
                 table: "Events",
-                column: "EnvironmentId");
+                column: "EnvironmentName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_EventTypeId",
+                name: "IX_Events_TypeName",
                 table: "Events",
-                column: "EventTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventTypes_NormalizedName",
-                table: "EventTypes",
-                column: "NormalizedName",
-                unique: true);
+                column: "TypeName");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

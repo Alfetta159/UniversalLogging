@@ -1,0 +1,126 @@
+2018-08-09 16:17:24.971 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-09 16:17:25.105 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2018-08-09 16:17:25.106 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2018-08-09 16:17:25.110 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2018-08-09 16:17:25.115 -07:00 [Information] Microsoft.EntityFrameworkCore.Migrations: Applying migration '20180809231716_Create1'.
+2018-08-09 16:17:25.133 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] DROP CONSTRAINT [FK_Events_Applications_ApplicationId];
+2018-08-09 16:17:25.134 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] DROP CONSTRAINT [FK_Events_Environments_EnvironmentId];
+2018-08-09 16:17:25.135 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] DROP CONSTRAINT [FK_Events_EventTypes_EventTypeId];
+2018-08-09 16:17:25.142 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [EventTypes] DROP CONSTRAINT [PK_EventTypes];
+2018-08-09 16:17:25.143 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_EventTypes_NormalizedName] ON [EventTypes];
+2018-08-09 16:17:25.144 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_Events_ApplicationId] ON [Events];
+2018-08-09 16:17:25.144 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_Events_EnvironmentId] ON [Events];
+2018-08-09 16:17:25.145 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_Events_EventTypeId] ON [Events];
+2018-08-09 16:17:25.147 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Environments] DROP CONSTRAINT [PK_Environments];
+2018-08-09 16:17:25.346 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_Environments_NormalizedName] ON [Environments];
+2018-08-09 16:17:25.349 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Applications] DROP CONSTRAINT [PK_Applications];
+2018-08-09 16:17:25.350 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DROP INDEX [IX_Applications_NormalizedName] ON [Applications];
+2018-08-09 16:17:25.386 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[EventTypes]') AND [c].[name] = N'Id');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [EventTypes] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [EventTypes] DROP COLUMN [Id];
+2018-08-09 16:17:25.402 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[EventTypes]') AND [c].[name] = N'NormalizedName');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [EventTypes] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [EventTypes] DROP COLUMN [NormalizedName];
+2018-08-09 16:17:25.420 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Events]') AND [c].[name] = N'ApplicationId');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Events] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Events] DROP COLUMN [ApplicationId];
+2018-08-09 16:17:26.207 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Events]') AND [c].[name] = N'EnvironmentId');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [Events] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [Events] DROP COLUMN [EnvironmentId];
+2018-08-09 16:17:26.224 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Events]') AND [c].[name] = N'EventTypeId');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [Events] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [Events] DROP COLUMN [EventTypeId];
+2018-08-09 16:17:26.240 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var5 sysname;
+SELECT @var5 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Environments]') AND [c].[name] = N'Id');
+IF @var5 IS NOT NULL EXEC(N'ALTER TABLE [Environments] DROP CONSTRAINT [' + @var5 + '];');
+ALTER TABLE [Environments] DROP COLUMN [Id];
+2018-08-09 16:17:27.021 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var6 sysname;
+SELECT @var6 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Environments]') AND [c].[name] = N'NormalizedName');
+IF @var6 IS NOT NULL EXEC(N'ALTER TABLE [Environments] DROP CONSTRAINT [' + @var6 + '];');
+ALTER TABLE [Environments] DROP COLUMN [NormalizedName];
+2018-08-09 16:17:27.038 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var7 sysname;
+SELECT @var7 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Applications]') AND [c].[name] = N'Id');
+IF @var7 IS NOT NULL EXEC(N'ALTER TABLE [Applications] DROP CONSTRAINT [' + @var7 + '];');
+ALTER TABLE [Applications] DROP COLUMN [Id];
+2018-08-09 16:17:27.052 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var8 sysname;
+SELECT @var8 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Applications]') AND [c].[name] = N'NormalizedName');
+IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [Applications] DROP CONSTRAINT [' + @var8 + '];');
+ALTER TABLE [Applications] DROP COLUMN [NormalizedName];
+2018-08-09 16:17:27.055 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [EventTypes] ADD [Name] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.664 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] ADD [ApplicationName] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.665 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] ADD [EnvironmentName] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.666 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] ADD [TimeStamp] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
+2018-08-09 16:17:27.668 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Events] ADD [TypeName] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.669 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Environments] ADD [Name] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.670 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Applications] ADD [Name] nvarchar(450) NOT NULL DEFAULT N'';
+2018-08-09 16:17:27.672 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [EventTypes] ADD CONSTRAINT [PK_EventTypes] PRIMARY KEY ([Name]);
+2018-08-09 16:17:27.674 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Environments] ADD CONSTRAINT [PK_Environments] PRIMARY KEY ([Name]);
+2018-08-09 16:17:27.675 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Applications] ADD CONSTRAINT [PK_Applications] PRIMARY KEY ([Name]);

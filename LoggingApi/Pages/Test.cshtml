@@ -1,0 +1,37 @@
+﻿@page
+@model LoggingApi.Pages.TestModel
+@{
+	ViewData["Title"] = "Test";
+}
+
+<h2>Test</h2>
+
+<form method="post">
+	<fieldset>
+		<legend>Add Customer</legend>
+		<div>
+			@Html.CheckBoxFor(model => model.Options.ForceInfo)
+			&nbsp;
+			<label asp-for="Options.ForceInfo" class="control-label"></label>
+		</div>
+		<div>
+			@Html.CheckBoxFor(model => model.Options.ForceWarning)
+			&nbsp;
+			<label asp-for="Options.ForceWarning" class="control-label"></label>
+		</div>
+		<div>
+			@Html.CheckBoxFor(model => model.Options.ForceError)
+			&nbsp;
+			<label asp-for="Options.ForceError" class="control-label"></label>
+		</div>
+		<div>
+			@Html.CheckBoxFor(model => model.Options.ForceCritical)
+			&nbsp;
+			<label asp-for="Options.ForceCritical" class="control-label"></label>
+		</div>
+		<div>
+			<input type="submit" value="Submit" class="submit" />
+			&nbsp;
+		</div>
+	</fieldset>
+</form>

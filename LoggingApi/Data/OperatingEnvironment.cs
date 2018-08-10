@@ -2,12 +2,12 @@
 
 namespace Meyer.Logging.Data
 {
-	public class OperatingEnvironment : Entity
+	public class OperatingEnvironment 
 	{
 		[Required(AllowEmptyStrings = false)]
 		public string DisplayName { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
-		public string NormalizedName { get; set; }
+		[Key]
+		public string Name { get; set; }
 	}
 }
