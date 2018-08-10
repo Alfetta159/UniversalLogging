@@ -25,7 +25,7 @@ namespace Meyer.Logging.Data
 
 			if (!(await ListEventTypesAsync()).Any(a => a.Name == entity.TypeName))
 			{
-				await AddAsync(new EventType
+				await AddAsync(new LogLevel
 				{
 					DisplayName = entity.TypeName,
 					Name = entity.TypeName,
@@ -56,11 +56,11 @@ namespace Meyer.Logging.Data
 		public Task<IQueryable<Application>> ListApplicationsAsync() { return Task.Run(() => ListApplications()); }
 
 
-		public Task<EventType> AddAsync(EventType entity) { return AddAsync<EventType>(entity); }
+		public Task<LogLevel> AddAsync(LogLevel entity) { return AddAsync<LogLevel>(entity); }
 
-		public IQueryable<EventType> ListEventTypes() { return DataContext.EventTypes; }
+		public IQueryable<LogLevel> ListEventTypes() { return DataContext.EventTypes; }
 
-		public Task<IQueryable<EventType>> ListEventTypesAsync() { return Task.Run(() => ListEventTypes()); }
+		public Task<IQueryable<LogLevel>> ListEventTypesAsync() { return Task.Run(() => ListEventTypes()); }
 
 
 

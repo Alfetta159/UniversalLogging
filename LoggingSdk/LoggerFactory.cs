@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 
-namespace LoggingSdk
+namespace Meyer.Logging.Client
 {
 	public class LoggerFactory : ILoggerFactory
 	{

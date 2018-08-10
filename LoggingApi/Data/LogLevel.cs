@@ -2,7 +2,7 @@
 
 namespace Meyer.Logging.Data
 {
-	public class EventType
+	public class LogLevel
 	{
 		[Required(AllowEmptyStrings = false)]
 		public string DisplayName { get; set; }

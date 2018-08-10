@@ -14,10 +14,10 @@ namespace Meyer.Logging.Data
 		public string Description { get; set; }
 
 		[Required]
-		public string TypeName { get; set; }
+		public string LevelName { get; set; }
 
-		[ForeignKey("TypeName")]
-		public EventType Type { get; set; }
+		[ForeignKey("LevelName")]
+		public LogLevel Level { get; set; }
 
 		[Required]
 		public string ApplicationName { get; set; }

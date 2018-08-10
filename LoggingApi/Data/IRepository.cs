@@ -13,9 +13,9 @@ namespace Meyer.Logging.Data
 
 		Task<IQueryable<Application>> ListApplicationsAsync();
 
-		IQueryable<EventType> ListEventTypes();
+		IQueryable<LogLevel> ListEventTypes();
 
-		Task<IQueryable<EventType>> ListEventTypesAsync();
+		Task<IQueryable<LogLevel>> ListEventTypesAsync();
 
 		IQueryable<OperatingEnvironment> ListEnvironments();
 
@@ -26,7 +26,7 @@ namespace Meyer.Logging.Data
 
 		Task<Application> AddAsync(Application entity);
 
-		Task<EventType> AddAsync(EventType entity);
+		Task<LogLevel> AddAsync(LogLevel entity);
 
 		Task<OperatingEnvironment> AddAsync(OperatingEnvironment entity);
 	}

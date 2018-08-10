@@ -1,14 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 
-namespace LoggingSdk
+namespace Meyer.Logging.Client
 {
 	public class LoggerProvider : ILoggerProvider
 	{
-		public ILogger CreateLogger(string categoryName)
-		{
-			throw new NotImplementedException();
-		}
+		public ILogger CreateLogger(string categoryName) { return new Logger(categoryName); }
 
 		public void Dispose()
 		{

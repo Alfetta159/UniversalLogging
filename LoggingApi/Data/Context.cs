@@ -6,7 +6,7 @@ namespace Meyer.Logging.Data
 	{
 		public DbSet<OperatingEnvironment> Environments { get; set; }
 		public DbSet<Application> Applications { get; set; }
-		public DbSet<EventType> EventTypes { get; set; }
+		public DbSet<LogLevel> EventTypes { get; set; }
 		public DbSet<Event> Events { get; set; }
 
 		protected Context(DbContextOptions options) : base(options) { }
