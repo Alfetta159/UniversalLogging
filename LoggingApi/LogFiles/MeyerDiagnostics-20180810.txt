@@ -1252,3 +1252,418 @@ System.InvalidOperationException: No route matches the supplied values.
 2018-08-10 10:49:35.168 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 59.7982ms 500 text/html; charset=utf-8
 2018-08-10 10:49:35.187 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Test in 1741.7066ms
 2018-08-10 10:49:35.195 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1756.9984ms 200 text/html; charset=utf-8
+2018-08-10 12:13:28.639 -07:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using 'C:\Users\przyd\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-10 12:13:29.182 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:13:29.184 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 DEBUG http://localhost:49511/  0
+2018-08-10 12:13:29.225 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 40.926ms 200 
+2018-08-10 12:13:29.485 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:13:29.507 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:13:29.697 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 205.9111ms
+2018-08-10 12:13:29.758 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 545.6584ms 200 text/html; charset=utf-8
+2018-08-10 12:13:29.773 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/images/banner3.svg  
+2018-08-10 12:13:29.775 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/images/banner2.svg  
+2018-08-10 12:13:29.781 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/lib/jquery/dist/jquery.js  
+2018-08-10 12:13:29.783 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/lib/bootstrap/dist/js/bootstrap.js  
+2018-08-10 12:13:29.787 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/lib/bootstrap/dist/css/bootstrap.css  
+2018-08-10 12:13:29.789 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /lib/bootstrap/dist/js/bootstrap.js was not modified
+2018-08-10 12:13:29.791 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /images/banner2.svg was not modified
+2018-08-10 12:13:29.793 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /images/banner3.svg was not modified
+2018-08-10 12:13:29.795 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /lib/jquery/dist/jquery.js was not modified
+2018-08-10 12:13:29.797 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /lib/bootstrap/dist/css/bootstrap.css was not modified
+2018-08-10 12:13:29.799 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 26.1502ms 304 image/svg+xml
+2018-08-10 12:13:29.803 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 26.1984ms 304 image/svg+xml
+2018-08-10 12:13:29.805 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 20.9073ms 304 application/javascript
+2018-08-10 12:13:29.808 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/css/site.css  
+2018-08-10 12:13:29.810 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/images/banner1.svg  
+2018-08-10 12:13:29.811 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/js/site.js?v=dLGP40S79Xnx6GqUthRF6NWvjvhQ1nOvdVSwaNcgG18  
+2018-08-10 12:13:29.813 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 21.8708ms 304 application/javascript
+2018-08-10 12:13:29.818 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /css/site.css was not modified
+2018-08-10 12:13:29.825 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /images/banner1.svg was not modified
+2018-08-10 12:13:29.828 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 18.0042ms 304 text/css
+2018-08-10 12:13:29.833 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 21.412ms 304 image/svg+xml
+2018-08-10 12:13:29.856 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /js/site.js was not modified
+2018-08-10 12:13:29.861 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 19.3546ms 304 text/css
+2018-08-10 12:13:29.868 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 49.5779ms 304 application/javascript
+2018-08-10 12:13:29.877 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2  
+2018-08-10 12:13:29.881 -07:00 [Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService: Policy execution failed.
+2018-08-10 12:13:29.885 -07:00 [Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService: Request origin https://localhost:44371 does not have permission to access the resource.
+2018-08-10 12:13:29.888 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: The file /lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2 was not modified
+2018-08-10 12:13:29.895 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 17.261ms 304 font/woff2
+2018-08-10 12:16:39.988 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:16:39.997 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:16:40.001 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:16:41.944 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 1941.0631ms
+2018-08-10 12:16:41.951 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1968.1549ms 200 text/html; charset=utf-8
+2018-08-10 12:16:42.061 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:16:42.081 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:16:42.090 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 28.1304ms 200 image/x-icon
+2018-08-10 12:17:46.344 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:17:46.350 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:17:46.353 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:17:46.625 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 271.9645ms
+2018-08-10 12:17:46.630 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 286.8683ms 200 text/html; charset=utf-8
+2018-08-10 12:17:46.749 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:17:46.756 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:17:46.763 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 11.3066ms 200 image/x-icon
+2018-08-10 12:18:20.086 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:18:20.292 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:18:20.295 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:18:20.301 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 5.9941ms
+2018-08-10 12:18:20.314 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 218.4412ms 200 text/html; charset=utf-8
+2018-08-10 12:18:20.398 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:18:20.401 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:18:20.408 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 6.1239ms 200 image/x-icon
+2018-08-10 12:19:40.576 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:19:40.748 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:19:40.751 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:19:40.758 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 6.6268ms
+2018-08-10 12:19:40.765 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 191.2808ms 200 text/html; charset=utf-8
+2018-08-10 12:19:40.853 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:19:40.860 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:19:40.868 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 9.5102ms 200 image/x-icon
+2018-08-10 12:20:27.458 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:20:27.653 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:20:27.655 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:20:27.661 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 6.1151ms
+2018-08-10 12:20:27.668 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 214.6946ms 200 text/html; charset=utf-8
+2018-08-10 12:20:27.774 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:20:27.779 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:20:27.784 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 10.6232ms 200 image/x-icon
+2018-08-10 12:21:10.554 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:21:10.716 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:21:10.718 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:21:10.726 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 5.2779ms
+2018-08-10 12:21:10.746 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 178.7149ms 200 text/html; charset=utf-8
+2018-08-10 12:21:10.830 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:21:10.839 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:21:10.842 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 11.3424ms 200 image/x-icon
+2018-08-10 12:21:46.070 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:21:46.227 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:21:46.230 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:21:46.237 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 5.0317ms
+2018-08-10 12:21:46.267 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 176.2103ms 200 text/html; charset=utf-8
+2018-08-10 12:21:46.337 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:21:46.355 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:21:46.363 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 21.6852ms 200 image/x-icon
+2018-08-10 12:22:29.298 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:22:29.497 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:22:29.500 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:22:29.510 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 6.2774ms
+2018-08-10 12:22:29.534 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 219.0119ms 200 text/html; charset=utf-8
+2018-08-10 12:22:29.613 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:22:29.622 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:22:29.631 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 13.0665ms 200 image/x-icon
+2018-08-10 12:22:44.933 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:22:45.110 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:22:45.112 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:22:45.119 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 6.3474ms
+2018-08-10 12:22:45.135 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 191.4708ms 200 text/html; charset=utf-8
+2018-08-10 12:22:45.218 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:22:45.232 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:22:45.234 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 17.2603ms 200 image/x-icon
+2018-08-10 12:28:53.100 -07:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using 'C:\Users\przyd\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-10 12:28:53.708 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:28:53.710 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 DEBUG http://localhost:49511/  0
+2018-08-10 12:28:53.750 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 43.9441ms 200 
+2018-08-10 12:28:54.028 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:28:54.063 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:28:54.264 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 190.3294ms
+2018-08-10 12:28:54.288 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 577.7911ms 200 text/html; charset=utf-8
+2018-08-10 12:29:59.474 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:30:01.517 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:30:01.522 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:30:01.533 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 12.3587ms
+2018-08-10 12:30:01.559 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 2072.9428ms 200 text/html; charset=utf-8
+2018-08-10 12:30:01.632 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:30:01.641 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:30:01.643 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 13.1252ms 200 image/x-icon
+2018-08-10 12:37:07.734 -07:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using 'C:\Users\przyd\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-10 12:37:08.242 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:37:08.245 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 DEBUG http://localhost:49511/  0
+2018-08-10 12:37:08.287 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 40.6908ms 200 
+2018-08-10 12:37:08.546 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:37:08.708 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:37:08.919 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:37:09.009 -07:00 [Warning] Microsoft.EntityFrameworkCore.Query: Query: '(from Event e in DbSet<Event> select Event ToApiModel([e])).Take(__p_0)' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results.
+2018-08-10 12:37:09.233 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[ApplicationName], [e].[Description], [e].[EnvironmentName], [e].[TimeStamp], [e].[TypeName]
+FROM [Events] AS [e]
+2018-08-10 12:37:09.448 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 857.4452ms
+2018-08-10 12:37:09.472 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1228.7107ms 200 text/html; charset=utf-8
+2018-08-10 12:38:25.800 -07:00 [Information] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: User profile is available. Using 'C:\Users\przyd\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-10 12:38:26.521 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:38:26.522 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 DEBUG http://localhost:49511/  0
+2018-08-10 12:38:26.561 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 38.8653ms 200 
+2018-08-10 12:38:26.834 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:38:27.014 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:38:27.284 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:38:27.365 -07:00 [Warning] Microsoft.EntityFrameworkCore.Query: Query: '(from Event e in DbSet<Event> select Event ToApiModel([e])).Take(__p_0)' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results.
+2018-08-10 12:38:27.555 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[ApplicationName], [e].[Description], [e].[EnvironmentName], [e].[TimeStamp], [e].[TypeName]
+FROM [Events] AS [e]
+2018-08-10 12:38:27.741 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 865.9905ms
+2018-08-10 12:38:27.765 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1244.9824ms 200 text/html; charset=utf-8
+2018-08-10 12:38:55.734 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:38:57.407 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:38:57.410 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:38:57.417 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:38:57.448 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[ApplicationName], [e].[Description], [e].[EnvironmentName], [e].[TimeStamp], [e].[TypeName]
+FROM [Events] AS [e]
+2018-08-10 12:38:57.456 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 44.0564ms
+2018-08-10 12:38:57.502 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1729.9656ms 200 text/html; charset=utf-8
+2018-08-10 12:38:57.565 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/favicon.ico  
+2018-08-10 12:38:57.579 -07:00 [Information] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware: Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\przyd\Source\Repos\UniversalLogging\LoggingApi\wwwroot\favicon.ico'
+2018-08-10 12:38:57.584 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 16.2811ms 200 image/x-icon
+2018-08-10 12:39:20.506 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/Test  
+2018-08-10 12:39:20.522 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Test", action = "", controller = ""}. Executing action /Test
+2018-08-10 12:39:20.577 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Test in 52.4902ms
+2018-08-10 12:39:20.583 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 76.0308ms 200 text/html; charset=utf-8
+2018-08-10 12:39:24.100 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://localhost:44371/Test application/x-www-form-urlencoded 386
+2018-08-10 12:39:24.103 -07:00 [Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService: Policy execution failed.
+2018-08-10 12:39:24.105 -07:00 [Information] Microsoft.AspNetCore.Cors.Infrastructure.CorsService: Request origin https://localhost:44371 does not have permission to access the resource.
+2018-08-10 12:39:24.107 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Test", action = "", controller = ""}. Executing action /Test
+2018-08-10 12:39:24.152 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnPost with arguments ((null)) - ModelState is Valid
+2018-08-10 12:39:24.416 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://localhost:44371/api/logger application/json; charset=utf-8 212
+2018-08-10 12:39:24.446 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "PostEventAsync", controller = "Logger", page = ""}. Executing action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging)
+2018-08-10 12:39:24.485 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) with arguments (Meyer.Logging.Models.Event) - Validation state: Valid
+2018-08-10 12:39:24.500 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:39:24.546 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (2ms) [Parameters=[@__entity_ApplicationName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Applications] AS [a]
+        WHERE [a].[Name] = @__entity_ApplicationName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.558 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[@__entity_TypeName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [EventTypes] AS [a]
+        WHERE [a].[Name] = @__entity_TypeName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.569 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[@__entity_EnvironmentName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Environments] AS [a]
+        WHERE [a].[Name] = @__entity_EnvironmentName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.697 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Events] ([ApplicationName], [Description], [EnvironmentName], [TimeStamp], [TypeName])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-08-10 12:39:24.730 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 241.4597ms.
+2018-08-10 12:39:24.741 -07:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'Meyer.Logging.Models.Event'.
+2018-08-10 12:39:24.748 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) in 300.8604ms
+2018-08-10 12:39:24.780 -07:00 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.ObjectResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-08-10 12:39:24.819 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 401.3415ms 500 text/html; charset=utf-8
+2018-08-10 12:39:24.842 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://localhost:44371/api/logger application/json; charset=utf-8 219
+2018-08-10 12:39:24.845 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "PostEventAsync", controller = "Logger", page = ""}. Executing action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging)
+2018-08-10 12:39:24.850 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) with arguments (Meyer.Logging.Models.Event) - Validation state: Valid
+2018-08-10 12:39:24.854 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:39:24.857 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_ApplicationName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Applications] AS [a]
+        WHERE [a].[Name] = @__entity_ApplicationName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.860 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_TypeName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [EventTypes] AS [a]
+        WHERE [a].[Name] = @__entity_TypeName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.865 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_EnvironmentName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Environments] AS [a]
+        WHERE [a].[Name] = @__entity_EnvironmentName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.877 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Events] ([ApplicationName], [Description], [EnvironmentName], [TimeStamp], [TypeName])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-08-10 12:39:24.888 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 34.7098ms.
+2018-08-10 12:39:24.894 -07:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'Meyer.Logging.Models.Event'.
+2018-08-10 12:39:24.901 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) in 54.49ms
+2018-08-10 12:39:24.908 -07:00 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.ObjectResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-08-10 12:39:24.927 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 80.6392ms 500 text/html; charset=utf-8
+2018-08-10 12:39:24.941 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://localhost:44371/api/logger application/json; charset=utf-8 215
+2018-08-10 12:39:24.944 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "PostEventAsync", controller = "Logger", page = ""}. Executing action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging)
+2018-08-10 12:39:24.948 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) with arguments (Meyer.Logging.Models.Event) - Validation state: Valid
+2018-08-10 12:39:24.955 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:39:24.958 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_ApplicationName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Applications] AS [a]
+        WHERE [a].[Name] = @__entity_ApplicationName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.962 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_TypeName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [EventTypes] AS [a]
+        WHERE [a].[Name] = @__entity_TypeName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.965 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_EnvironmentName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Environments] AS [a]
+        WHERE [a].[Name] = @__entity_EnvironmentName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:24.970 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Events] ([ApplicationName], [Description], [EnvironmentName], [TimeStamp], [TypeName])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-08-10 12:39:24.973 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 22.4262ms.
+2018-08-10 12:39:24.975 -07:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'Meyer.Logging.Models.Event'.
+2018-08-10 12:39:24.980 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) in 33.1421ms
+2018-08-10 12:39:24.987 -07:00 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.ObjectResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-08-10 12:39:25.014 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 71.4225ms 500 text/html; charset=utf-8
+2018-08-10 12:39:25.027 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 POST http://localhost:44371/api/logger application/json; charset=utf-8 221
+2018-08-10 12:39:25.030 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Route matched with {action = "PostEventAsync", controller = "Logger", page = ""}. Executing action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging)
+2018-08-10 12:39:25.034 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executing action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) with arguments (Meyer.Logging.Models.Event) - Validation state: Valid
+2018-08-10 12:39:25.039 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:39:25.042 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_ApplicationName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Applications] AS [a]
+        WHERE [a].[Name] = @__entity_ApplicationName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:25.047 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_TypeName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [EventTypes] AS [a]
+        WHERE [a].[Name] = @__entity_TypeName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:25.051 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__entity_EnvironmentName_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Environments] AS [a]
+        WHERE [a].[Name] = @__entity_EnvironmentName_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-10 12:39:25.057 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Events] ([ApplicationName], [Description], [EnvironmentName], [TimeStamp], [TypeName])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Events]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-08-10 12:39:25.061 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action method Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 24.5424ms.
+2018-08-10 12:39:25.064 -07:00 [Information] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor: Executing ObjectResult, writing value of type 'Meyer.Logging.Models.Event'.
+2018-08-10 12:39:25.071 -07:00 [Information] Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker: Executed action Meyer.Logging.Controllers.LoggerController.PostEventAsync (Meyer.Logging) in 38.3332ms
+2018-08-10 12:39:25.082 -07:00 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware: An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.ObjectResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-08-10 12:39:25.106 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 71.3189ms 500 text/html; charset=utf-8
+2018-08-10 12:39:25.123 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Test in 1009.1871ms
+2018-08-10 12:39:25.172 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 1027.3952ms 200 text/html; charset=utf-8
+2018-08-10 12:39:26.052 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request starting HTTP/1.1 GET http://localhost:44371/  
+2018-08-10 12:39:26.054 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Route matched with {page = "/Index", action = "", controller = ""}. Executing action /Index
+2018-08-10 12:39:26.056 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executing handler method OnGet with arguments ((null)) - ModelState is Valid
+2018-08-10 12:39:26.060 -07:00 [Information] Microsoft.EntityFrameworkCore.Infrastructure: Entity Framework Core 2.1.1-rtm-30846 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-08-10 12:39:26.064 -07:00 [Information] Microsoft.EntityFrameworkCore.Database.Command: Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[ApplicationName], [e].[Description], [e].[EnvironmentName], [e].[TimeStamp], [e].[TypeName]
+FROM [Events] AS [e]
+2018-08-10 12:39:26.068 -07:00 [Information] Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker: Executed action /Index in 11.7107ms
+2018-08-10 12:39:26.076 -07:00 [Information] Microsoft.AspNetCore.Hosting.Internal.WebHost: Request finished in 22.6702ms 200 text/html; charset=utf-8
