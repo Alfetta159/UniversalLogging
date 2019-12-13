@@ -48,4 +48,4 @@ namespace Meyer.Logging.Client
 			}
 		}
 	}
-}{
+}
