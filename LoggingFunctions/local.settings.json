@@ -1,7 +1,8 @@
 {
-    "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "",
-        "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-    }
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "InfrastructureConnection": "Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev2;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  }
 }

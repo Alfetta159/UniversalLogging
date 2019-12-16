@@ -9,11 +9,16 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using Meyer.Logging.Data.Interfaces;
 
 namespace Meyer.Logging
 {
     public class EntryFunction
     {
+        readonly IEntryRepository _EntryRepository;
+
+        public EntryFunction(IEntryRepository entryFunction) { _EntryRepository = entryFunction; }
+
         [FunctionName("logentry")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", "delete", Route = null)] HttpRequest req,
@@ -28,7 +33,7 @@ namespace Meyer.Logging
                 case "POST":
                     var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 
-                    return CreateEntry(req.GetQueryParameterDictionary(), requestBody);
+                    return await CreateEntryAsync(req.GetQueryParameterDictionary(), requestBody);
                 case "DELETE":
                     return DeleteEntry(req.GetQueryParameterDictionary());
                 default:
@@ -59,10 +64,13 @@ namespace Meyer.Logging
             throw new NotImplementedException();
         }
 
-        private IActionResult CreateEntry(IDictionary<string, string> getQueryParameterDictionary, string requestBody)
+        async Task<IActionResult> CreateEntryAsync(IDictionary<string, string> getQueryParameterDictionary, string requestBody)
         {
+            var clientapplicationkey = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("clientapplication", StringComparison.InvariantCultureIgnoreCase));
+            var clientapplication = clientapplicationkey == null ? "clientapplication" : getQueryParameterDictionary[clientapplicationkey];
+
             var environmentkey = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("environment", StringComparison.InvariantCultureIgnoreCase));
-            var environment = environmentkey == null ? "development" :getQueryParameterDictionary[ environmentkey];
+            var environment = environmentkey == null ? "development" : getQueryParameterDictionary[environmentkey];
 
             var useridvalue = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("userid", StringComparison.InvariantCultureIgnoreCase));
             if (String.IsNullOrWhiteSpace(useridvalue)) throw new ArgumentException("User ID is required.");
@@ -71,7 +79,11 @@ namespace Meyer.Logging
             var typevalue = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("type", StringComparison.InvariantCultureIgnoreCase));
             var type = typevalue == null ? "information" : getQueryParameterDictionary[typevalue];
 
-            throw new NotImplementedException();
+            return new OkObjectResult(await _EntryRepository.AddAsync(clientapplication, environment, type, userid, requestBody, default));
+
+
+            //throw new NotImplementedException();
+            //_logEntryRepository.Add(environment, type, userid, requestBody);
         }
     }
 }
