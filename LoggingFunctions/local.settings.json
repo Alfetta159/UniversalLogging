@@ -1,8 +1,9 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "InfrastructureConnection": "Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev2;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+	"AzureWebJobsStorage": "UseDevelopmentStorage=true",
+	"FUNCTIONS_WORKER_RUNTIME": "dotnet",
+	"InfrastructureConnection": "Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+	"StorageConnection": "DefaultEndpointsProtocol=https;AccountName=muniversalstorageaccount;AccountKey=GVKfx1iinznYBWxPqkXXy7oq3Ai3YXSrvdairiHPkK/uZsFBgUblaRryrIKcm6M/hisfYQOuoTAC1ZF+Z0UMRQ==;EndpointSuffix=core.windows.net"
   }
 }

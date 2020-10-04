@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Meyer.Logging.Data.Context
 {
-    public partial class Type
+    public partial class Severity
     {
-        public Type()
+        public Severity()
         {
             Entry = new HashSet<Entry>();
         }
