@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Meyer.Logging.Data.Context
 {
-    public partial class Severity
+	public partial class Severity
     {
         public Severity()
         {

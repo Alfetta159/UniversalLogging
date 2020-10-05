@@ -1,4 +1,5 @@
 using Azure.Storage.Queues;
+using Meyer.Logging.Data.Context;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -10,24 +11,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Meyer.Logging
 {
 	public class EntryRest
 	{
-		[FunctionName("logentry")]
+		const string _EntryQueueName = "entryqueue";
+		readonly InfrastructureDevContext _Data;
+
+		public EntryRest(InfrastructureDevContext data) { _Data = data; }
+
+
+		[FunctionName("logentries")]
 		public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", "delete", Route = null)] HttpRequest req, ILogger log)
 		{
 			log.LogInformation("C# HTTP trigger function processed a request.");
-
-			//var connectionstring = Environment.GetEnvironmentVariable("StorageConnection");
-			//var queue = new QueueClient(connectionstring, "EntryQueue");
-
-			//await queue.CreateAsync();
-			//await queue.SendMessageAsync(item);
-
 
 			try
 			{
@@ -36,36 +35,29 @@ namespace Meyer.Logging
 					case "GET":
 						return GetEntries(req.GetQueryParameterDictionary());
 					case "POST":
-
 						await QueueEntryAsync(req);
 						return new CreatedResult("", null);
 					case "DELETE":
-						return DeleteEntry(req.GetQueryParameterDictionary());
+						return EnvironmentVariables.Environment == "Production"
+							? new ForbidResult()
+							: await DeleteEntryAsync(req.GetQueryParameterDictionary());
 					default:
 						return new ObjectResult("Unsupported method") { StatusCode = 405, };
 				}
-
-				string name = req.Query["name"];
-
-				//dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-				//name = name ?? data?.name;
-
-				//return name != null
-				//	? (ActionResult)new OkObjectResult($"Hello, {name}")
-				//	: new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-				//throw new NotImplementedException();
 			}
-			catch (Exception ex) { throw; }
+			catch (Exception ex)
+			{
+				await ex.QueueLoggingErrorAsync();
+				throw;
+			}
 		}
 
 		private async Task QueueEntryAsync(HttpRequest req)
 		{
-			var connectionstring = Environment.GetEnvironmentVariable("StorageConnection");
-			var queue = new QueueClient(connectionstring, "entryqueue");
+			var queue = new QueueClient(EnvironmentVariables.StorageAccountString, _EntryQueueName);
 			var createtask = queue.CreateIfNotExistsAsync();
-
 			var parameters = req.GetQueryParameterDictionary();
+
 			var entryitem = new EntryItem
 			{
 				ClientApplicationName = parameters["clientapplication"],
@@ -75,49 +67,62 @@ namespace Meyer.Logging
 				Entry = JObject.Parse(await new StreamReader(req.Body).ReadToEndAsync()),
 			};
 
-			var entryjson = JsonConvert.SerializeObject(entryitem);
-			var entrybase64 = Base64Encode(entryjson);
+			var entrybase64 = JsonConvert
+				.SerializeObject(entryitem)
+				.Base64Encode();
 
 			await createtask;
 			await queue.SendMessageAsync(entrybase64);
-
-		}
-		public static string Base64Encode(string plainText)
-		{
-			var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-			return Convert.ToBase64String(plainTextBytes);
 		}
 
-		private IActionResult GetEntries(IDictionary<string, string> getQueryParameterDictionary)
+		private IActionResult GetEntries(IDictionary<string, string> parameters)
 		{
-			throw new NotImplementedException();
+			return new OkObjectResult(QueryEntries(parameters)
+				.Select(p => new Entry
+				{
+					Body = p.Body,
+					ClientApplication = new ClientApplication
+					{
+						DisplayName = p.ClientApplication.DisplayName,
+						Id = p.ClientApplication.Id,
+						IsArchived = p.ClientApplication.IsArchived,
+						NormalizedName = p.ClientApplication.NormalizedName,
+					},
+					ClientApplicationId = p.ClientApplicationId,
+					Created = p.Created,
+					EnvironmentName = p.EnvironmentName,
+					Environment = new Data.Context.Environment { },
+					SeverityName = p.SeverityName,
+					Severity = new Severity
+					{
+						Description = p.Severity.Description,
+						DisplayName = p.Severity.DisplayName,
+					},
+					UserId = p.UserId,
+				}));
 		}
 
-		private IActionResult DeleteEntry(IDictionary<string, string> getQueryParameterDictionary)
+		private IQueryable<Entry> QueryEntries(IDictionary<string, string> parameters)
 		{
-			throw new NotImplementedException();
+			return _Data
+				.Entry
+				.Where(e => !parameters.ContainsKey("clientapplication") || e.ClientApplication.NormalizedName == parameters["clientapplication"]
+					&& !parameters.ContainsKey("created") || e.Created == DateTime.Parse(parameters["created"])
+					&& !parameters.ContainsKey("environment") || e.EnvironmentName == parameters["environment"]
+					&& !parameters.ContainsKey("severity") || e.SeverityName == parameters["severity"]
+					&& !parameters.ContainsKey("userid") || e.UserId == parameters["userid"])
+				.Skip(parameters.ContainsKey("skip") ? Int32.Parse(parameters["skip"]) : 0)
+				.Take(parameters.ContainsKey("top") ? Int32.Parse(parameters["top"]) : 0);
 		}
 
-		async Task<IActionResult> CreateEntryAsync(IDictionary<string, string> getQueryParameterDictionary, string requestBody)
+		private async Task<IActionResult> DeleteEntryAsync(IDictionary<string, string> parameters)
 		{
-			var clientapplicationkey = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("clientapplication", StringComparison.InvariantCultureIgnoreCase));
-			var clientapplication = clientapplicationkey == null ? "clientapplication" : getQueryParameterDictionary[clientapplicationkey];
-			var environmentkey = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("environment", StringComparison.InvariantCultureIgnoreCase));
-			var environment = environmentkey == null ? "development" : getQueryParameterDictionary[environmentkey];
-			var useridvalue = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("userid", StringComparison.InvariantCultureIgnoreCase));
+			var entries = QueryEntries(parameters);
 
-			if (String.IsNullOrWhiteSpace(useridvalue)) throw new ArgumentException("User ID is required.");
+			_Data.RemoveRange(entries);
+			await _Data.SaveChangesAsync();
 
-			var userid = getQueryParameterDictionary[useridvalue];
-
-			var typevalue = getQueryParameterDictionary.Keys.SingleOrDefault(k => k.Equals("type", StringComparison.InvariantCultureIgnoreCase));
-			var type = typevalue == null ? "information" : getQueryParameterDictionary[typevalue];
-
-			//return new OkObjectResult(await _EntryRepository.AddAsync(clientapplication, environment, type, userid, requestBody, default));
-
-
-			throw new NotImplementedException();
-			//_logEntryRepository.Add(environment, type, userid, requestBody);
+			return new NoContentResult();
 		}
 	}
 }

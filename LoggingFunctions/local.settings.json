@@ -4,6 +4,10 @@
 	"AzureWebJobsStorage": "UseDevelopmentStorage=true",
 	"FUNCTIONS_WORKER_RUNTIME": "dotnet",
 	"InfrastructureConnection": "Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-	"StorageConnection": "DefaultEndpointsProtocol=https;AccountName=muniversalstorageaccount;AccountKey=GVKfx1iinznYBWxPqkXXy7oq3Ai3YXSrvdairiHPkK/uZsFBgUblaRryrIKcm6M/hisfYQOuoTAC1ZF+Z0UMRQ==;EndpointSuffix=core.windows.net"
+	"StorageConnection": "DefaultEndpointsProtocol=https;AccountName=muniversalstorageaccount;AccountKey=GVKfx1iinznYBWxPqkXXy7oq3Ai3YXSrvdairiHPkK/uZsFBgUblaRryrIKcm6M/hisfYQOuoTAC1ZF+Z0UMRQ==;EndpointSuffix=core.windows.net",
+	"Environment": "local",
+	"SmtpApiKey": "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",
+	"ToEmail": "danielp@meyer.com",
+	"ToName": "Daniel Przybylski"
   }
 }

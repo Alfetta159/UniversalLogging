@@ -29,15 +29,19 @@ namespace Meyer.Logging
 				{
 					ClientApplication = clientapplication,
 					EnvironmentName = environmentname,
-					TypeName = severity,
+					SeverityName = severity,
 					UserId = itemobject.UserId,
 					Body = itemobject.Entry.ToString(),
 					Created = DateTime.UtcNow,
-				}, default) ;
+				}, default);
 
 				await _Data.SaveChangesAsync();
 			}
-			catch (Exception ex) { throw; }
+			catch (Exception ex)
+			{
+				await ex.QueueLoggingErrorAsync();
+				throw;
+			}
 		}
 
 		private ClientApplication CheckClientApplicationName(string clientApplicationName)

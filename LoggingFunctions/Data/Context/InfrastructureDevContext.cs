@@ -59,7 +59,7 @@ namespace Meyer.Logging.Data.Context
 
                 entity.HasIndex(e => e.ClientApplicationId);
 
-                entity.HasIndex(e => e.TypeName);
+                entity.HasIndex(e => e.SeverityName);
 
                 entity.Property(e => e.EnvironmentName).HasMaxLength(32);
 
@@ -67,7 +67,7 @@ namespace Meyer.Logging.Data.Context
 
                 entity.Property(e => e.Body).IsRequired();
 
-                entity.Property(e => e.TypeName)
+                entity.Property(e => e.SeverityName)
                     .IsRequired()
                     .HasMaxLength(16);
 
@@ -75,13 +75,13 @@ namespace Meyer.Logging.Data.Context
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.ClientApplicationId);
 
-                entity.HasOne(d => d.EnvironmentNameNavigation)
+                entity.HasOne(d => d.Environment)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.EnvironmentName);
 
-                entity.HasOne(d => d.TypeNameNavigation)
+                entity.HasOne(d => d.Severity)
                     .WithMany(p => p.Entry)
-                    .HasForeignKey(d => d.TypeName);
+                    .HasForeignKey(d => d.SeverityName);
             });
 
             modelBuilder.Entity<Environment>(entity =>
