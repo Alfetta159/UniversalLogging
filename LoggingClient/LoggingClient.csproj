@@ -4,11 +4,32 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Meyer.Logging.Client</AssemblyName>
     <RootNamespace>Meyer.Logging.Client</RootNamespace>
+    <Version>1.0.0-preview-1</Version>
+    <Description>.NET Core logger client for Meyer Universal Logging.</Description>
+    <PackageProjectUrl>https://potsandpans.visualstudio.com/UniversalLogging</PackageProjectUrl>
+    <PackageIcon>Meyer_M_Blue.png</PackageIcon>
+    <RepositoryUrl>https://potsandpans.visualstudio.com/UniversalLogging/_git/UniversalLogging</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Copyright>2020 Meyer Corporation</Copyright>
+    <PackageLicenseFile>Licensing.txt</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Meyer.Api.Client" Version="8.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Licensing.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Meyer_M_Blue.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

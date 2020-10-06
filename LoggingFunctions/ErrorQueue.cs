@@ -19,7 +19,7 @@ namespace Meyer.Logging
 		}
 
 		[FunctionName("ErrorQueue")]
-		public async Task RunAsync([QueueTrigger("ErrorQueue", Connection = "StorageConnection")] string item, ILogger log)
+		public async Task RunAsync([QueueTrigger("ErrorQueue", Connection = "AzureWebJobsStorage")] string item, ILogger log)
 		{
 			log.LogInformation($"EntryQueue trigger function processed: {item}");
 
