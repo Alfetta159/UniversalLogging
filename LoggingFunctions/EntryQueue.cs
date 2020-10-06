@@ -14,7 +14,7 @@ namespace Meyer.Logging
 		public EntryQueue(InfrastructureDevContext data) { _Data = data; }
 
 		[FunctionName("EntryQueue")]
-		public async System.Threading.Tasks.Task RunAsync([QueueTrigger("entryqueue", Connection = "StorageConnection")] string item, ILogger log)
+		public async System.Threading.Tasks.Task RunAsync([QueueTrigger("entryqueue", Connection = "AzureWebJobsStorage")] string item, ILogger log)
 		{
 			log.LogInformation($"EntryQueue trigger function processed: {item}");
 			try

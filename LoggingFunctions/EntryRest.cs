@@ -54,7 +54,7 @@ namespace Meyer.Logging
 
 		private async Task QueueEntryAsync(HttpRequest req)
 		{
-			var queue = new QueueClient(EnvironmentVariables.StorageAccountString, _EntryQueueName);
+			var queue = new QueueClient(EnvironmentVariables.AzureWebJobsStorage, _EntryQueueName);
 			var createtask = queue.CreateIfNotExistsAsync();
 			var parameters = req.GetQueryParameterDictionary();
 

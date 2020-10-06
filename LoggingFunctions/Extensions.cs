@@ -19,7 +19,7 @@ namespace Meyer.Logging
 		{
 			const string _ErrorQueueName = "errorqueue";
 
-			var queue = new QueueClient(EnvironmentVariables.StorageAccountString, _ErrorQueueName);
+			var queue = new QueueClient(EnvironmentVariables.AzureWebJobsStorage, _ErrorQueueName);
 			var createtask = queue.CreateIfNotExistsAsync();
 
 			var entrybase64 = JsonConvert
