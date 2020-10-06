@@ -18,6 +18,14 @@ namespace Meyer.Logging
 	public class EntryRest
 	{
 		const string _EntryQueueName = "entryqueue";
+		const string _UserId = "userid";
+		const string _ClientApplication= "clientapplication";
+		const string _Code = "code";
+		const string _Severity = "severity";
+		const string _Created = "created";
+		const string _Top = "top";
+		const string _Skip= "skip";
+
 		readonly InfrastructureDevContext _Data;
 
 		public EntryRest(InfrastructureDevContext data) { _Data = data; }
@@ -38,12 +46,20 @@ namespace Meyer.Logging
 						await QueueEntryAsync(req);
 						return new CreatedResult("", null);
 					case "DELETE":
+						//TODO:determine environment
 						return EnvironmentVariables.Environment == "Production"
 							? new ForbidResult()
 							: await DeleteEntryAsync(req.GetQueryParameterDictionary());
 					default:
 						return new ObjectResult("Unsupported method") { StatusCode = 405, };
 				}
+			}
+			catch (ArgumentException ex)
+			{
+				if (ex.HResult == 2)
+					return new BadRequestObjectResult(ex.Message);
+				else
+					throw;
 			}
 			catch (Exception ex)
 			{
@@ -54,16 +70,19 @@ namespace Meyer.Logging
 
 		private async Task QueueEntryAsync(HttpRequest req)
 		{
+			var parameters = req.GetQueryParameterDictionary();
+
+			CheckParameters(parameters);
+
 			var queue = new QueueClient(EnvironmentVariables.AzureWebJobsStorage, _EntryQueueName);
 			var createtask = queue.CreateIfNotExistsAsync();
-			var parameters = req.GetQueryParameterDictionary();
 
 			var entryitem = new EntryItem
 			{
-				ClientApplicationName = parameters["clientapplication"],
-				Severity = parameters["severity"],
+				ClientApplicationName = parameters[_ClientApplication].ToUpperInvariant(),
+				Severity = parameters[_Severity],
 				Entry = JObject.Parse(await new StreamReader(req.Body).ReadToEndAsync()),
-				UserId = parameters.ContainsKey("user") ? parameters["user"] : null,
+				UserId = parameters.ContainsKey(_UserId) ? parameters[_UserId] : null,
 			};
 
 			var entrybase64 = JsonConvert
@@ -72,6 +91,30 @@ namespace Meyer.Logging
 
 			await createtask;
 			await queue.SendMessageAsync(entrybase64);
+		}
+
+		static void CheckParameters(IDictionary<string, string> dictionaries)
+		{
+			var acceptedparameternames = new string[] { _UserId, _Severity, _ClientApplication, _Code };
+
+			foreach (var key in dictionaries.Keys)
+			{
+				if (!acceptedparameternames.Contains(key))
+				{
+					throw new ArgumentException($"Acceptable parameters are: '{_UserId}','{_Severity}', & '{_ClientApplication}'. The parameter names are case-sensitive.")
+					{
+						HResult = 2,
+					};
+				}
+			}
+
+			if (!dictionaries.Keys.Contains(_Severity)|| !dictionaries.Keys.Contains(_ClientApplication))
+			{
+				throw new ArgumentException($"Parameters must include: '{_Severity}', & '{_ClientApplication}'. The parameter names are case-sensitive.")
+				{
+					HResult = 2,
+				};
+			}
 		}
 
 		private IActionResult GetEntries(IDictionary<string, string> parameters)
@@ -103,12 +146,12 @@ namespace Meyer.Logging
 		{
 			return _Data
 				.Entry
-				.Where(e => !parameters.ContainsKey("clientapplication") || e.ClientApplication.NormalizedName == parameters["clientapplication"]
-					&& !parameters.ContainsKey("created") || e.Created == DateTime.Parse(parameters["created"])
-					&& !parameters.ContainsKey("severity") || e.SeverityName == parameters["severity"]
-					&& !parameters.ContainsKey("userid") || e.UserId == parameters["userid"])
-				.Skip(parameters.ContainsKey("skip") ? Int32.Parse(parameters["skip"]) : 0)
-				.Take(parameters.ContainsKey("top") ? Int32.Parse(parameters["top"]) : 0);
+				.Where(e => !parameters.ContainsKey(_ClientApplication) || e.ClientApplication.NormalizedName == parameters[_ClientApplication]
+					&& !parameters.ContainsKey(_Created) || e.Created == DateTime.Parse(parameters[_Created])
+					&& !parameters.ContainsKey(_Severity) || e.SeverityName == parameters[_Severity]
+					&& !parameters.ContainsKey(_UserId) || e.UserId == parameters[_UserId])
+				.Skip(parameters.ContainsKey(_Skip) ? Int32.Parse(parameters[_Skip]) : 0)
+				.Take(parameters.ContainsKey(_Top) ? Int32.Parse(parameters[_Top]) : 0);
 		}
 
 		private async Task<IActionResult> DeleteEntryAsync(IDictionary<string, string> parameters)
