@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingFunctions", "LoggingFunctions\LoggingFunctions.csproj", "{10CFEA9C-9CBE-42AA-87F0-8054E773642D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingWebApp", "LoggingWebApp\LoggingWebApp.csproj", "{AEA6B052-912C-4735-B6A1-1940B0CB4000}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingClient", "LoggingClient\LoggingClient.csproj", "{092FECA0-4AE6-4880-92ED-EABF517E4796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{D0B1D86A-897C-476B-8CC8-169719C143E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{D0B1D86A-897C-476B-8CC8-169719C143E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingTest", "LoggingTest\LoggingTest.csproj", "{4A258503-6224-4C27-A69A-0085EA2BB263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingTest", "LoggingTest\LoggingTest.csproj", "{4A258503-6224-4C27-A69A-0085EA2BB263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{10CFEA9C-9CBE-42AA-87F0-8054E773642D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10CFEA9C-9CBE-42AA-87F0-8054E773642D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10CFEA9C-9CBE-42AA-87F0-8054E773642D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AEA6B052-912C-4735-B6A1-1940B0CB4000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEA6B052-912C-4735-B6A1-1940B0CB4000}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEA6B052-912C-4735-B6A1-1940B0CB4000}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEA6B052-912C-4735-B6A1-1940B0CB4000}.Release|Any CPU.Build.0 = Release|Any CPU
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Release|Any CPU.ActiveCfg = Release|Any CPU
