@@ -17,7 +17,6 @@ namespace Meyer.Logging.Data.Context
 
         public virtual DbSet<ClientApplication> ClientApplication { get; set; }
         public new virtual DbSet<Entry> Entry { get; set; }
-        public virtual DbSet<Environment> Environment { get; set; }
         public virtual DbSet<Severity> Severity { get; set; }
         public virtual DbSet<User> User { get; set; }
 
@@ -53,15 +52,13 @@ namespace Meyer.Logging.Data.Context
 
             modelBuilder.Entity<Entry>(entity =>
             {
-                entity.HasKey(e => new { e.EnvironmentName, e.Created, e.UserId, e.ClientApplicationId });
+                entity.HasKey(e => new { e.Created, e.ClientApplicationId });
 
                 entity.ToTable("Entry", "log");
 
                 entity.HasIndex(e => e.ClientApplicationId);
 
                 entity.HasIndex(e => e.SeverityName);
-
-                entity.Property(e => e.EnvironmentName).HasMaxLength(32);
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(N'')");
 
@@ -75,24 +72,9 @@ namespace Meyer.Logging.Data.Context
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.ClientApplicationId);
 
-                entity.HasOne(d => d.Environment)
-                    .WithMany(p => p.Entry)
-                    .HasForeignKey(d => d.EnvironmentName);
-
                 entity.HasOne(d => d.Severity)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.SeverityName);
-            });
-
-            modelBuilder.Entity<Environment>(entity =>
-            {
-                entity.HasKey(e => e.DisplayName);
-
-                entity.ToTable("Environment", "log");
-
-                entity.Property(e => e.DisplayName).HasMaxLength(32);
-
-                entity.Property(e => e.Description).HasMaxLength(256);
             });
 
             modelBuilder.Entity<Severity>(entity =>

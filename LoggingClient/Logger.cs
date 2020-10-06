@@ -1,46 +1,92 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Rest.Serialization;
 using System;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Text.RegularExpressions;
 
-namespace LoggingClient
+namespace Meyer.Logging.Client
 {
-    public class Logger<T> : ILogger<T>
-    {        /// <summary>
-             /// Constructor.
-             /// <para>CAUTION: You never create a logger directly. This is a responsibility of the logging framework by calling the provider's CreateLogger().</para>
-             /// </summary>
-        public Logger(Provider Provider, string Category)
-        {
-            this.Provider = Provider;
-            this.Category = Category;
-        }
+	public class Logger : ILogger
+	{
+		private readonly LoggerConfiguration _Configuration;
 
-        /// <summary>
-        /// The logger provider who created this instance
-        /// </summary>
-        public Provider Provider { get; private set; }
+		public Logger(LoggerConfiguration config)
+		{
+			_Configuration = config;
+		}
 
-        /// <summary>
-        /// The category this instance serves.
-        /// <para>The category is usually the fully qualified class name of a class asking for a logger, e.g. MyNamespace.MyClass </para>
-        /// </summary>
-        public string Category { get; private set; }
+		public IDisposable BeginScope<TState>(TState state)
+		{
+			return null;
+		}
 
-        /// <summary>
-        /// Begins a logical operation scope. Returns an IDisposable that ends the logical operation scope on dispose.
-        /// </summary>
-        public IDisposable BeginScope<TState>(TState state)
-        {
-            return Provider.ScopeProvider.Push(state);
-        }
+		public bool IsEnabled(LogLevel logLevel)
+		{
+			return logLevel == _Configuration.LogLevel;
+		}
 
-        public bool IsEnabled(LogLevel logLevel)
-        {
-            throw new NotImplementedException();
-        }
+		public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+		{
+			if (!IsEnabled(logLevel))
+			{
+				return;
+			}
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
-        {
-            throw new NotImplementedException();
-        }
-    }
+			if (_Configuration.EventId == 0 || _Configuration.EventId == eventId.Id)
+			{
+				using var client = GetClient();
+				var fullmessage = formatter.Invoke(state, exception);
+				var content = SetupContent(fullmessage, exception);
+				var user = GetUser(fullmessage);
+
+				var result = client
+					.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{user}", content)
+					.GetAwaiter()
+					.GetResult();
+			}
+		}
+
+		private object GetUser(string something)
+		{
+			var regex = new Regex("(?<=\\[User: )(.*?)(?=\\])");
+
+			var user = regex.Match(something).Value;
+
+			return String.IsNullOrWhiteSpace(user)
+				? String.Empty
+				: $"&user={user}";
+		}
+
+		HttpClient GetClient()
+		{
+			var client = new HttpClient
+			{
+				BaseAddress = _Configuration.BaseAddress,
+			};
+
+			var defaultRequestHeaders = client.DefaultRequestHeaders;
+
+			if (defaultRequestHeaders.Accept == null || !defaultRequestHeaders.Accept.Any(m => m.MediaType == "application/json"))
+			{
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			}
+
+			return client;
+		}
+
+		public static HttpContent SetupContent(object item, Exception exception)
+		{
+			var content = SafeJsonConvert.SerializeObject(new
+			{
+				Item = item,
+				Exception = exception
+			});
+
+			return new StringContent(content, Encoding.UTF8, "application/json");
+		}
+	}
 }

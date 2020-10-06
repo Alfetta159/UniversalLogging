@@ -61,10 +61,9 @@ namespace Meyer.Logging
 			var entryitem = new EntryItem
 			{
 				ClientApplicationName = parameters["clientapplication"],
-				EnvironmentName = parameters["environment"],
 				Severity = parameters["severity"],
-				UserId = parameters["userid"],
 				Entry = JObject.Parse(await new StreamReader(req.Body).ReadToEndAsync()),
+				UserId = parameters.ContainsKey("user") ? parameters["user"] : null,
 			};
 
 			var entrybase64 = JsonConvert
@@ -90,8 +89,6 @@ namespace Meyer.Logging
 					},
 					ClientApplicationId = p.ClientApplicationId,
 					Created = p.Created,
-					EnvironmentName = p.EnvironmentName,
-					Environment = new Data.Context.Environment { },
 					SeverityName = p.SeverityName,
 					Severity = new Severity
 					{
@@ -108,7 +105,6 @@ namespace Meyer.Logging
 				.Entry
 				.Where(e => !parameters.ContainsKey("clientapplication") || e.ClientApplication.NormalizedName == parameters["clientapplication"]
 					&& !parameters.ContainsKey("created") || e.Created == DateTime.Parse(parameters["created"])
-					&& !parameters.ContainsKey("environment") || e.EnvironmentName == parameters["environment"]
 					&& !parameters.ContainsKey("severity") || e.SeverityName == parameters["severity"]
 					&& !parameters.ContainsKey("userid") || e.UserId == parameters["userid"])
 				.Skip(parameters.ContainsKey("skip") ? Int32.Parse(parameters["skip"]) : 0)

@@ -22,13 +22,11 @@ namespace Meyer.Logging
 				var itemobject = JsonConvert.DeserializeObject<EntryItem>(item);
 
 				var clientapplication = CheckClientApplicationName(itemobject.ClientApplicationName);
-				var environmentname = CheckEnvironmentName(itemobject.EnvironmentName);
 				var severity = CheckSeverity(itemobject.Severity);
 
 				await _Data.AddAsync(new Entry
 				{
 					ClientApplication = clientapplication,
-					EnvironmentName = environmentname,
 					SeverityName = severity,
 					UserId = itemobject.UserId,
 					Body = itemobject.Entry.ToString(),
@@ -57,20 +55,6 @@ namespace Meyer.Logging
 				}).Entity;
 			else
 				return item;
-		}
-
-		private string CheckEnvironmentName(string environmentName)
-		{
-			var item = _Data.Environment.SingleOrDefault(ca => ca.DisplayName == environmentName);
-
-			if (item == null)
-				return _Data.Add(new Data.Context.Environment
-				{
-					Description = environmentName,
-					DisplayName = environmentName,
-				}).Entity.DisplayName;
-			else
-				return item.DisplayName;
 		}
 
 		private string CheckSeverity(string severity)

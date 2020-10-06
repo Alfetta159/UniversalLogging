@@ -1,67 +1,54 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LoggingClient
+namespace Meyer.Logging.Client
 {
-    public abstract class Provider : ILoggerProvider
-    {
-        IExternalScopeProvider fScopeProvider;
+	public class Provider : ILoggerProvider
+	{
+		private bool disposedValue;
+		private readonly LoggerConfiguration _config;
+		private readonly ConcurrentDictionary<string, Logger> _loggers = new ConcurrentDictionary<string, Logger>();
 
-        public ILogger CreateLogger(string categoryName)
-        {
-            throw new NotImplementedException();
-        }
+		public Provider(LoggerConfiguration config)
+		{
+			_config = config;
+		}
 
-        /// <summary>
-        /// Returns the scope provider. 
-        /// <para>Called by logger instances created by this provider.</para>
-        /// </summary>
-        internal IExternalScopeProvider ScopeProvider
-        {
-            get
-            {
-                if (fScopeProvider == null) fScopeProvider = new LoggerExternalScopeProvider();
+		public ILogger CreateLogger(string categoryName)
+		{
+			return _loggers.GetOrAdd(categoryName, name => new Logger(_config));
+		}
 
-                return fScopeProvider;
-            }
-        }
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					_loggers.Clear();
+				}
 
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+				// TODO: free unmanaged resources (unmanaged objects) and override finalizer
+				// TODO: set large fields to null
+				disposedValue = true;
+			}
+		}
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
+		// // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+		// ~Provider()
+		// {
+		//     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+		//     Dispose(disposing: false);
+		// }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~Provider()
-        // {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
-        }
-        #endregion
-    }
+		public void Dispose()
+		{
+			// Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+			Dispose(disposing: true);
+			GC.SuppressFinalize(this);
+		}
+	}
 }
