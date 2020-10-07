@@ -74,7 +74,7 @@ namespace Meyer.Logging.Client
 				.AddProvider(new Provider(configuration));
 
 			var logger = factory
-				.CreateLogger(application);
+				.CreateLogger<Logger>();
 
 			logger.LogInformation("Add Meyer Logging.");
 

@@ -5,12 +5,12 @@ using Microsoft.Extensions.Logging;
 
 namespace LoggingFunctionsDemo
 {
-    public static class Function1
-    {
-        [FunctionName("Function1")]
-        public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
-        {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-        }
-    }
+	public static class Function1
+	{
+		[FunctionName("Function1")]
+		public static void Run([TimerTrigger("0 */5 * * * *", RunOnStartup = true)] TimerInfo myTimer, ILogger log)
+		{
+			log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+		}
+	}
 }
