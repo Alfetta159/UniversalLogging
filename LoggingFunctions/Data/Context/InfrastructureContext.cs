@@ -4,32 +4,28 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Meyer.Logging.Data.Context
 {
-    public partial class InfrastructureDevContext : DbContext
+    public partial class InfrastructureContext : DbContext
     {
-        public InfrastructureDevContext()
+        public InfrastructureContext()
         {
         }
 
-        public InfrastructureDevContext(DbContextOptions<InfrastructureDevContext> options)
+        public InfrastructureContext(DbContextOptions<InfrastructureContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<ClientApplication> ClientApplication { get; set; }
-        public new virtual DbSet<Entry> Entry { get; set; }
+        new public virtual DbSet<Entry> Entry { get; set; }
         public virtual DbSet<Severity> Severity { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            }
-        }
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			base.OnConfiguring(optionsBuilder);
+		}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ClientApplication>(entity =>
             {
@@ -60,19 +56,18 @@ namespace Meyer.Logging.Data.Context
 
                 entity.HasIndex(e => e.SeverityName);
 
-                entity.Property(e => e.UserId).HasDefaultValueSql("(N'')");
-
                 entity.Property(e => e.Body).IsRequired();
 
                 entity.Property(e => e.SeverityName)
                     .IsRequired()
-                    .HasMaxLength(16);
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("(N'')");
 
                 entity.HasOne(d => d.ClientApplication)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.ClientApplicationId);
 
-                entity.HasOne(d => d.Severity)
+                entity.HasOne(d => d.SeverityNameNavigation)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.SeverityName);
             });

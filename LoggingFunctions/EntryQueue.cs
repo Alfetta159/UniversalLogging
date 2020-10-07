@@ -9,9 +9,9 @@ namespace Meyer.Logging
 {
 	public class EntryQueue
 	{
-		readonly InfrastructureDevContext _Data;
+		readonly InfrastructureContext _Data;
 
-		public EntryQueue(InfrastructureDevContext data) { _Data = data; }
+		public EntryQueue(InfrastructureContext data) { _Data = data; }
 
 		[FunctionName("EntryQueue")]
 		public async System.Threading.Tasks.Task RunAsync([QueueTrigger("entryqueue", Connection = "AzureWebJobsStorage")] string item, ILogger log)
@@ -44,7 +44,7 @@ namespace Meyer.Logging
 
 		private ClientApplication CheckClientApplicationName(string clientApplicationName)
 		{
-			var item = _Data.ClientApplication.SingleOrDefault(ca => ca.DisplayName == clientApplicationName);
+			var item = _Data.ClientApplication.SingleOrDefault(ca => ca.NormalizedName == clientApplicationName);
 
 			if (item == null)
 				return _Data.Add(new ClientApplication

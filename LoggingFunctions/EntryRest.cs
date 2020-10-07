@@ -26,10 +26,9 @@ namespace Meyer.Logging
 		const string _Top = "top";
 		const string _Skip= "skip";
 
-		readonly InfrastructureDevContext _Data;
+		readonly InfrastructureContext _Data;
 
-		public EntryRest(InfrastructureDevContext data) { _Data = data; }
-
+		public EntryRest(InfrastructureContext data) { _Data = data; }
 
 		[FunctionName("logentries")]
 		public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", "delete", Route = null)] HttpRequest req, ILogger log)
@@ -133,11 +132,6 @@ namespace Meyer.Logging
 					ClientApplicationId = p.ClientApplicationId,
 					Created = p.Created,
 					SeverityName = p.SeverityName,
-					Severity = new Severity
-					{
-						Description = p.Severity.Description,
-						DisplayName = p.Severity.DisplayName,
-					},
 					UserId = p.UserId,
 				}));
 		}
