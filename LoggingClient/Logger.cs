@@ -44,10 +44,17 @@ namespace Meyer.Logging.Client
 				var user = GetUser(fullmessage);
 				var code = GetCode();
 
-				var result = client
-					.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{user}", content)
-					.GetAwaiter()
-					.GetResult();
+				try
+				{
+					var result = client
+						.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{user}", content)
+						.GetAwaiter()
+						.GetResult();
+				}
+				catch (HttpRequestException)
+				{ //TODO: Send an email, but not too many emails.
+					throw;
+				}
 			}
 		}
 

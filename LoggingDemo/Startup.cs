@@ -46,13 +46,8 @@ namespace LoggingDemo
 				app.UseHsts();
 			}
 
-			loggerFactory.AddProvider(new Provider(new LoggerConfiguration
-			{
-				BaseAddress = new Uri("http://localhost:7071"),
-				LogLevel = LogLevel.Information,
-				Application = "LOGGINGDEMO",
-				ApiKey = Configuration.GetValue<string>("LoggingProvider:AccessKey"),
-			}));
+			loggerFactory
+				.AddMeyerLogging(Configuration);
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();

@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Runtime.ExceptionServices;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Meyer.Logging.Client
 {
@@ -28,6 +27,30 @@ namespace Meyer.Logging.Client
 			configure(config);
 
 			return loggerFactory.AddLogger(config);
+		}
+
+		public static ILoggerFactory AddMeyerLogging(this ILoggerFactory loggerFactory, IConfiguration configuration)
+		{
+			loggerFactory
+				.AddProvider(new Provider(new LoggerConfiguration
+				{
+					BaseAddress = new Uri(configuration.TryGetValue<string>("LoggingProvider:BaseAddress")),
+					LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), configuration.TryGetValue<string>("Logging:LogLevel:Default")),
+					Application = configuration.TryGetValue<string>("Identity:NormalizedName"),
+					ApiKey = configuration.TryGetValue<string>("LoggingProvider:ApiKey"),
+				}));
+
+			return loggerFactory;
+		}
+
+		private static T TryGetValue<T>(this IConfiguration configuration, string key)
+		{
+			var result = configuration.GetValue<T>(key);
+
+			if (result == null)
+				throw new InvalidOperationException($"'{key}' configuration value must be present. An empty string is acceptable.");
+			else
+				return result;
 		}
 
 		public static IServiceCollection AddMeyerLoggingForAzureFunctions(this IServiceCollection services)
