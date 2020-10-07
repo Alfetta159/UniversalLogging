@@ -24,8 +24,6 @@ namespace Meyer.Logging.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=meyerinfrastructure.database.windows.net;Initial Catalog=InfrastructureDev;Integrated Security=False;User ID=meyerdev;Password={DC721A29-6D7D-4F7D-91A6-BD037A7D627B};Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
