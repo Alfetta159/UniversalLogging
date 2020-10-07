@@ -12,18 +12,18 @@ namespace Meyer.Logging
 	{
 		public override void Configure(IFunctionsHostBuilder builder)
 		{
+			//builder
+			//	.Services
+			//	.AddScoped<ISendGridClient, SendGridClient>(factory =>
+			//	{
+			//		return new SendGridClient(apiKey: System.Environment.GetEnvironmentVariable("SmtpApiKey"));
+			//	});
+
 			var connectionString = System.Environment.GetEnvironmentVariable("InfrastructureConnection");
 
 			builder
 				.Services
-				.AddDbContext<InfrastructureDevContext>(options => options.UseSqlServer(connectionString));
-
-			builder
-				.Services
-				.AddScoped<ISendGridClient, SendGridClient>(factory =>
-				{
-					return new SendGridClient(apiKey: System.Environment.GetEnvironmentVariable("SmtpApiKey"));
-				});
+				.AddDbContext<InfrastructureContext>(options => options.UseSqlServer( connectionString));
 		}
 	}
 }

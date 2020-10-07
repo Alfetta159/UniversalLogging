@@ -4,30 +4,28 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Meyer.Logging.Data.Context
 {
-    public partial class InfrastructureDevContext : DbContext
+    public partial class InfrastructureContext : DbContext
     {
-        public InfrastructureDevContext()
+        public InfrastructureContext()
         {
         }
 
-        public InfrastructureDevContext(DbContextOptions<InfrastructureDevContext> options)
+        public InfrastructureContext(DbContextOptions<InfrastructureContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<ClientApplication> ClientApplication { get; set; }
-        public new virtual DbSet<Entry> Entry { get; set; }
+        new public virtual DbSet<Entry> Entry { get; set; }
         public virtual DbSet<Severity> Severity { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-            }
-        }
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			base.OnConfiguring(optionsBuilder);
+		}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ClientApplication>(entity =>
             {
@@ -58,19 +56,18 @@ namespace Meyer.Logging.Data.Context
 
                 entity.HasIndex(e => e.SeverityName);
 
-                entity.Property(e => e.UserId).HasDefaultValueSql("(N'')");
-
                 entity.Property(e => e.Body).IsRequired();
 
                 entity.Property(e => e.SeverityName)
                     .IsRequired()
-                    .HasMaxLength(16);
+                    .HasMaxLength(16)
+                    .HasDefaultValueSql("(N'')");
 
                 entity.HasOne(d => d.ClientApplication)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.ClientApplicationId);
 
-                entity.HasOne(d => d.Severity)
+                entity.HasOne(d => d.SeverityNameNavigation)
                     .WithMany(p => p.Entry)
                     .HasForeignKey(d => d.SeverityName);
             });
