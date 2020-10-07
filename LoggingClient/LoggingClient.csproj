@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Meyer.Logging.Client</AssemblyName>
     <RootNamespace>Meyer.Logging.Client</RootNamespace>
-    <Version>1.0.0-preview-5</Version>
+    <Version>1.0.0-preview-7</Version>
     <Description>.NET Core logger client for Meyer Universal Logging.</Description>
     <PackageProjectUrl>https://potsandpans.visualstudio.com/UniversalLogging</PackageProjectUrl>
     <PackageIcon>Meyer_M_Blue.png</PackageIcon>

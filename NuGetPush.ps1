@@ -11,4 +11,4 @@ function Update-Package ([string]$package,[string]$version,[string]$path)
 	dotnet nuget push "$path\bin\$buildconfiguration\$package.$version.nupkg" -s https://meyernuget.azurewebsites.net -k C7331B09-BAFD-4AEE-96BC-EB8233B3342E --skip-duplicate
 }
 
-Update-Package -package "Meyer.Logging.Client" -version "1.0.0-preview-5" -path "LoggingClient"
+Update-Package -package "Meyer.Logging.Client" -version "1.0.0-preview-7" -path "LoggingClient"

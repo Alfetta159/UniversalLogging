@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -47,7 +46,7 @@ namespace Meyer.Logging.Client
 				try
 				{
 					var result = client
-						.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{user}", content)
+						.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{code}{user}", content)
 						.GetAwaiter()
 						.GetResult();
 				}
