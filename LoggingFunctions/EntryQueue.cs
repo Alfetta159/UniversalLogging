@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Meyer.Logging
 {
@@ -14,7 +15,7 @@ namespace Meyer.Logging
 		public EntryQueue(InfrastructureContext data) { _Data = data; }
 
 		[FunctionName("EntryQueue")]
-		public async System.Threading.Tasks.Task RunAsync([QueueTrigger("entryqueue", Connection = "AzureWebJobsStorage")] string item, ILogger log)
+		public async Task RunAsync([QueueTrigger("entryqueue", Connection = "AzureWebJobsStorage")] string item, ILogger log)
 		{
 			log.LogInformation($"EntryQueue trigger function processed: {item}");
 			try

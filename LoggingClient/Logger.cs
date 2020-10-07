@@ -42,12 +42,20 @@ namespace Meyer.Logging.Client
 				var fullmessage = formatter.Invoke(state, exception);
 				var content = SetupContent(fullmessage, exception);
 				var user = GetUser(fullmessage);
+				var code = GetCode();
 
 				var result = client
 					.PostAsync($"api/logentries?severity={logLevel}&clientapplication={_Configuration.Application}{user}", content)
 					.GetAwaiter()
 					.GetResult();
 			}
+		}
+
+		private string GetCode()
+		{
+			return String.IsNullOrWhiteSpace(_Configuration.ApiKey)
+				? String.Empty
+				: $"&code={_Configuration.ApiKey}";
 		}
 
 		private object GetUser(string something)

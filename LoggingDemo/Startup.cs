@@ -52,7 +52,8 @@ namespace LoggingDemo
 			{
 				BaseAddress = new Uri("http://localhost:7071"),
 				LogLevel = LogLevel.Information,
-				Application="LOGGINGDEMO",
+				Application = "LOGGINGDEMO",
+				ApiKey = Configuration.GetValue<string>("LoggingProvider:AccessKey"),
 			}));
 
 			app.UseHttpsRedirection();
