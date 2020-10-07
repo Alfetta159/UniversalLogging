@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.ExceptionServices;
 
 namespace Meyer.Logging.Client
 {
@@ -27,6 +28,44 @@ namespace Meyer.Logging.Client
 			configure(config);
 
 			return loggerFactory.AddLogger(config);
+		}
+
+		public static IServiceCollection AddMeyerLoggingForAzureFunctions(this IServiceCollection services)
+		{
+			var application = TryGetEnvironmentVariable("LoggingApplication");
+
+			var configuration = new LoggerConfiguration
+			{
+				ApiKey = TryGetEnvironmentVariable("LoggingApiKey"),
+				Application = application,
+				BaseAddress = new Uri(TryGetEnvironmentVariable("LoggingBaseAddress")),
+				LogLevel = (LogLevel)Int32.Parse(TryGetEnvironmentVariable("LoggingLogLevel")),
+			};
+
+			services
+				.AddLogging();
+
+			var factory = new LoggerFactory();
+
+			factory
+				.AddProvider(new Provider(configuration));
+
+			var logger = factory
+				.CreateLogger(application);
+
+			logger.LogInformation("Add Meyer Logging.");
+
+			return services;
+		}
+
+		private static string TryGetEnvironmentVariable(string key)
+		{
+			var result = Environment.GetEnvironmentVariable(key);
+
+			if (String.IsNullOrEmpty("key"))
+				throw new InvalidOperationException($"'{key}' application setting must be present. Use empty string if no value is needed.");
+			else
+				return result;
 		}
 	}
 }
