@@ -133,7 +133,8 @@ namespace Meyer.Logging
 					Created = p.Created,
 					SeverityName = p.SeverityName,
 					UserId = p.UserId,
-				}));
+				})
+				.ToArray());
 		}
 
 		private IQueryable<Entry> QueryEntries(IDictionary<string, string> parameters)
