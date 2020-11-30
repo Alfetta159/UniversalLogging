@@ -119,13 +119,15 @@ namespace Meyer.Logging
         private IActionResult GetEntries(IDictionary<string, string> parameters)
         {
             var count = parameters.Count;
+            var skip = IntOrNegativeOne(parameters, "skip");
+            var take = IntOrNegativeOne(parameters, "take");
 
             var check = count switch
             {
-                0 => _Data
+                2 => _Data
                     .Entry
-                    .Skip(0)
-                    .Take(100)
+                    .Skip(skip)
+                    .Take(take)
                     .Select(p => new Entry
                     {
                         Body = p.Body,
@@ -142,50 +144,67 @@ namespace Meyer.Logging
                         UserId = p.UserId,
                     })
                     .ToArray(),
+                _ => throw new NotImplementedException(),
             };
 
             return new OkObjectResult(check);
+
+            // return new OkObjectResult(QueryEntries(parameters)
+            // 	.Select(p => new Entry
+            // 	{
+            // 		Body = p.Body,
+            // 		ClientApplication = new ClientApplication
+            // 		{
+            // 			DisplayName = p.ClientApplication.DisplayName,
+            // 			Id = p.ClientApplication.Id,
+            // 			IsArchived = p.ClientApplication.IsArchived,
+            // 			NormalizedName = p.ClientApplication.NormalizedName,
+            // 		},
+            // 		ClientApplicationId = p.ClientApplicationId,
+            // 		Created = p.Created,
+            // 		SeverityName = p.SeverityName,
+            // 		UserId = p.UserId,
+            // 	})
+            // 	.ToArray());
         }
-		
-        // return new OkObjectResult(QueryEntries(parameters)
-        // 	.Select(p => new Entry
-        // 	{
-        // 		Body = p.Body,
-        // 		ClientApplication = new ClientApplication
-        // 		{
-        // 			DisplayName = p.ClientApplication.DisplayName,
-        // 			Id = p.ClientApplication.Id,
-        // 			IsArchived = p.ClientApplication.IsArchived,
-        // 			NormalizedName = p.ClientApplication.NormalizedName,
-        // 		},
-        // 		ClientApplicationId = p.ClientApplicationId,
-        // 		Created = p.Created,
-        // 		SeverityName = p.SeverityName,
-        // 		UserId = p.UserId,
-        // 	})
-        // 	.ToArray());
+
+        private int IntOrNegativeOne(IDictionary<string, string> parameters, string key)
+        {
+            if (String.IsNullOrWhiteSpace(key))
+                throw new ArgumentException("Parameter cannot be null or whitespace.", nameof(key));
+            else
+            {
+                var value = parameters[key];
+
+                if (String.IsNullOrWhiteSpace(value))
+                    return -1;
+                else
+                {
+                    return Int32.Parse(value);
+                }
+            }
+        }
+
+        private IQueryable<Entry> QueryEntries(IDictionary<string, string> parameters)
+        {
+            return _Data
+                .Entry
+                .Where(e => !parameters.ContainsKey(_ClientApplication) || e.ClientApplication.NormalizedName == parameters[_ClientApplication]
+                    && !parameters.ContainsKey(_Created) || e.Created == DateTime.Parse(parameters[_Created])
+                    && !parameters.ContainsKey(_Severity) || e.SeverityName == parameters[_Severity]
+                    && !parameters.ContainsKey(_UserId) || e.UserId == parameters[_UserId])
+                .Skip(parameters.ContainsKey(_Skip) ? Int32.Parse(parameters[_Skip]) : 0)
+                .Take(parameters.ContainsKey(_Top) ? Int32.Parse(parameters[_Top]) : 0);
+        }
+
+        private async Task<IActionResult> DeleteEntryAsync(IDictionary<string, string> parameters)
+        {
+            var entries = QueryEntries(parameters);
+
+            _Data.RemoveRange(entries);
+            await _Data.SaveChangesAsync();
+
+            return new NoContentResult();
+        }
     }
-
-    private IQueryable<Entry> QueryEntries(IDictionary<string, string> parameters)
-    {
-        return _Data
-            .Entry
-            .Where(e => !parameters.ContainsKey(_ClientApplication) || e.ClientApplication.NormalizedName == parameters[_ClientApplication]
-                && !parameters.ContainsKey(_Created) || e.Created == DateTime.Parse(parameters[_Created])
-                && !parameters.ContainsKey(_Severity) || e.SeverityName == parameters[_Severity]
-                && !parameters.ContainsKey(_UserId) || e.UserId == parameters[_UserId])
-            .Skip(parameters.ContainsKey(_Skip) ? Int32.Parse(parameters[_Skip]) : 0)
-            .Take(parameters.ContainsKey(_Top) ? Int32.Parse(parameters[_Top]) : 0);
-    }
-
-    private async Task<IActionResult> DeleteEntryAsync(IDictionary<string, string> parameters)
-    {
-        var entries = QueryEntries(parameters);
-
-        _Data.RemoveRange(entries);
-        await _Data.SaveChangesAsync();
-
-        return new NoContentResult();
-    }
-}
 }
