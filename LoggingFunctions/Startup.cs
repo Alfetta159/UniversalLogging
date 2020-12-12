@@ -19,11 +19,11 @@ namespace Meyer.Logging
 			//		return new SendGridClient(apiKey: System.Environment.GetEnvironmentVariable("SmtpApiKey"));
 			//	});
 
-			var connectionString = System.Environment.GetEnvironmentVariable("InfrastructureConnection");
+			var connectionString = System.Environment.GetEnvironmentVariable("InfrastructureConnectionDev");
 
 			builder
 				.Services
-				.AddDbContext<InfrastructureContext>(options => options.UseSqlServer( connectionString));
+				.AddDbContext<InfrastructureContext>(options => options.UseSqlServer(connectionString));
 		}
 	}
 }
