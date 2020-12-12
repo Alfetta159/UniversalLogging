@@ -15,10 +15,10 @@ namespace Meyer.Logging.Data.Context
         {
         }
 
-        public virtual DbSet<ClientApplication> ClientApplication { get; set; }
-        new public virtual DbSet<Entry> Entry { get; set; }
-        public virtual DbSet<Severity> Severity { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ClientApplication> ClientApplications { get; set; }
+        public virtual DbSet<Entry> Entries { get; set; }
+        public virtual DbSet<Severity> Severities { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

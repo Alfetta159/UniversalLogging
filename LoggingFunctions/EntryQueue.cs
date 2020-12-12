@@ -45,7 +45,7 @@ namespace Meyer.Logging
 
 		private ClientApplication CheckClientApplicationName(string clientApplicationName)
 		{
-			var item = _Data.ClientApplication.SingleOrDefault(ca => ca.NormalizedName == clientApplicationName);
+			var item = _Data.ClientApplications.SingleOrDefault(ca => ca.NormalizedName == clientApplicationName);
 
 			if (item == null)
 				return _Data.Add(new ClientApplication
@@ -60,7 +60,7 @@ namespace Meyer.Logging
 
 		private string CheckSeverity(string severity)
 		{
-			var item = _Data.Severity.SingleOrDefault(ca => ca.DisplayName == severity);
+			var item = _Data.Severities.SingleOrDefault(ca => ca.DisplayName == severity);
 
 			if (item == null)
 				return _Data.Add(new Severity
