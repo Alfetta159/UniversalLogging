@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.181
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingFunctions", "LoggingFunctions\LoggingFunctions.csproj", "{10CFEA9C-9CBE-42AA-87F0-8054E773642D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingClient", "LoggingClient\LoggingClient.csproj", "{092FECA0-4AE6-4880-92ED-EABF517E4796}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingTest", "LoggingTest\LoggingTest.csproj", "{4A258503-6224-4C27-A69A-0085EA2BB263}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D71424AE-A992-4CFF-9320-B003DA1ABD51}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingFunctionsDemo", "LoggingFunctionsDemo\LoggingFunctionsDemo.csproj", "{9CD7E63C-5E25-4AFB-9B7A-BC320D5946E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{0A8639C5-61F7-4474-9D22-1AB01DA0704B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,14 +32,14 @@ Global
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{092FECA0-4AE6-4880-92ED-EABF517E4796}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A258503-6224-4C27-A69A-0085EA2BB263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A258503-6224-4C27-A69A-0085EA2BB263}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A258503-6224-4C27-A69A-0085EA2BB263}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A258503-6224-4C27-A69A-0085EA2BB263}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CD7E63C-5E25-4AFB-9B7A-BC320D5946E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CD7E63C-5E25-4AFB-9B7A-BC320D5946E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CD7E63C-5E25-4AFB-9B7A-BC320D5946E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CD7E63C-5E25-4AFB-9B7A-BC320D5946E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A8639C5-61F7-4474-9D22-1AB01DA0704B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8639C5-61F7-4474-9D22-1AB01DA0704B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8639C5-61F7-4474-9D22-1AB01DA0704B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8639C5-61F7-4474-9D22-1AB01DA0704B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
