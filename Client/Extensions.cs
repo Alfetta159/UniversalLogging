@@ -6,7 +6,7 @@ using System;
 
 namespace Meyer.Logging.Client
 {
-    public static class ColorConsoleLoggerExtensions
+    public static class Extensions
     {
         public static ILoggingBuilder AddColorConsoleLogger(
             this ILoggingBuilder builder)
@@ -15,17 +15,17 @@ namespace Meyer.Logging.Client
 
             builder
                 .Services
-                .TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, ColorConsoleLoggerProvider>());
+                .TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, LoggerProvider>());
 
             LoggerProviderOptions
-                .RegisterProviderOptions<ColorConsoleLoggerConfiguration, ColorConsoleLoggerProvider>(builder.Services);
+                .RegisterProviderOptions<Configuration, LoggerProvider>(builder.Services);
 
             return builder;
         }
 
         public static ILoggingBuilder AddColorConsoleLogger(
             this ILoggingBuilder builder,
-            Action<ColorConsoleLoggerConfiguration> configure)
+            Action<Configuration> configure)
         {
             builder.AddColorConsoleLogger();
             builder.Services.Configure(configure);

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Meyer.Logging.Client
 {
-    public class ColorConsoleLoggerConfiguration
+    public class Configuration
     {
         public int EventId { get; set; }
 

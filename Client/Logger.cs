@@ -3,14 +3,14 @@ using System;
 
 namespace Meyer.Logging.Client
 {
-    public sealed class ColorConsoleLogger : ILogger
+    public sealed class Logger : ILogger
     {
         private readonly string _name;
-        private readonly Func<ColorConsoleLoggerConfiguration> _getCurrentConfig;
+        private readonly Func<Configuration> _getCurrentConfig;
 
-        public ColorConsoleLogger(
+        public Logger(
             string name,
-            Func<ColorConsoleLoggerConfiguration> getCurrentConfig) =>
+            Func<Configuration> getCurrentConfig) =>
             (_name, _getCurrentConfig) = (name, getCurrentConfig);
 
         public IDisposable BeginScope<TState>(TState state) => default!;
@@ -30,7 +30,7 @@ namespace Meyer.Logging.Client
                 return;
             }
 
-            ColorConsoleLoggerConfiguration config = _getCurrentConfig();
+            Configuration config = _getCurrentConfig();
             if (config.EventId == 0 || config.EventId == eventId.Id)
             {
                 ConsoleColor originalColor = Console.ForegroundColor;
