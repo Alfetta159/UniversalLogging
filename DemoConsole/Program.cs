@@ -8,7 +8,7 @@ Console.WriteLine("Hello, World!");
 using IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(builder =>
         builder.ClearProviders()
-            .AddUniversalLogger(configuration =>
+            .AddColorConsoleLogger(configuration =>
             {
                 // Replace warning value from appsettings.json of "Cyan"
                 configuration.LogLevels[LogLevel.Warning] = ConsoleColor.DarkCyan;

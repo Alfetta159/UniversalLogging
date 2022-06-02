@@ -1,30 +1,33 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Meyer.Logging.Client
 {
-    public static class Extensions
+    public static class ColorConsoleLoggerExtensions
     {
-        public static ILoggingBuilder AddUniversalLogger(this ILoggingBuilder builder)
+        public static ILoggingBuilder AddColorConsoleLogger(
+            this ILoggingBuilder builder)
         {
-            //builder.AddConfiguration();
+            builder.AddConfiguration();
 
             builder
                 .Services
-                .TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, UniversalLoggerProvider>());
+                .TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, ColorConsoleLoggerProvider>());
 
-            //LoggerProviderOptions.RegisterProviderOptions<Configuration, UniversalLoggerProvider>(builder.Services);
+            LoggerProviderOptions
+                .RegisterProviderOptions<ColorConsoleLoggerConfiguration, ColorConsoleLoggerProvider>(builder.Services);
 
             return builder;
         }
 
-        public static ILoggingBuilder AddUniversalLogger(this ILoggingBuilder builder, Action<Configuration> configure)
+        public static ILoggingBuilder AddColorConsoleLogger(
+            this ILoggingBuilder builder,
+            Action<ColorConsoleLoggerConfiguration> configure)
         {
-            builder.AddUniversalLogger();
+            builder.AddColorConsoleLogger();
             builder.Services.Configure(configure);
 
             return builder;

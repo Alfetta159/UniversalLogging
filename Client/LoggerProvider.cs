@@ -1,21 +1,35 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Runtime.Versioning;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Meyer.Logging.Client
 {
-    [ProviderAlias("Universal")]
-    public class UniversalLoggerProvider : ILoggerProvider
+    //[UnsupportedOSPlatform("browser")]
+    [ProviderAlias("ColorConsole")]
+    public sealed class ColorConsoleLoggerProvider : ILoggerProvider
     {
-        public ILogger CreateLogger(string categoryName)
+        private readonly IDisposable _onChangeToken;
+        private ColorConsoleLoggerConfiguration _currentConfig;
+        private readonly ConcurrentDictionary<string, ColorConsoleLogger> _loggers = new ConcurrentDictionary<string, ColorConsoleLogger>(StringComparer.OrdinalIgnoreCase);
+
+        public ColorConsoleLoggerProvider(
+            IOptionsMonitor<ColorConsoleLoggerConfiguration> config)
         {
-            throw new NotImplementedException();
+            _currentConfig = config.CurrentValue;
+            _onChangeToken = config.OnChange(updatedConfig => _currentConfig = updatedConfig);
         }
+
+        public ILogger CreateLogger(string categoryName) =>
+            _loggers.GetOrAdd(categoryName, name => new ColorConsoleLogger(name, GetCurrentConfig));
+
+        private ColorConsoleLoggerConfiguration GetCurrentConfig() => _currentConfig;
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _loggers.Clear();
+            _onChangeToken.Dispose();
         }
     }
 }
