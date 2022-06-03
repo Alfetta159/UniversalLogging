@@ -3,13 +3,21 @@ using Meyer.Logging.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 Console.WriteLine("Hello, World!");
 
-using IHost host = Host.CreateDefaultBuilder(args)
+var config = new ConfigurationBuilder()
+   .SetBasePath(Directory.GetCurrentDirectory())
+   .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+   .Build();
+
+using IHost host = Host
+    .CreateDefaultBuilder(args)
     .ConfigureLogging(builder =>
-        builder.ClearProviders()
-            .AddColorConsoleLogger(configuration =>
+        builder
+            .ClearProviders()
+            .AddUniversalLogger(configuration =>
             {
                 // Replace warning value from appsettings.json of "Cyan"
                 configuration.LogLevels[LogLevel.Warning] = ConsoleColor.DarkCyan;

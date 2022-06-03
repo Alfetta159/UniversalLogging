@@ -10,26 +10,25 @@ namespace Meyer.Logging.Client
     [ProviderAlias("Universal")]
     public sealed class LoggerProvider : ILoggerProvider
     {
-        private readonly IDisposable _onChangeToken;
-        private Configuration _currentConfig;
+        private readonly IDisposable OnChangeToken;
+        private Configuration CurrentConfig;
         private readonly ConcurrentDictionary<string, Logger> _loggers = new ConcurrentDictionary<string, Logger>(StringComparer.OrdinalIgnoreCase);
 
         public LoggerProvider(
             IOptionsMonitor<Configuration> config)
         {
-            _currentConfig = config.CurrentValue;
-            _onChangeToken = config.OnChange(updatedConfig => _currentConfig = updatedConfig);
+            CurrentConfig = config.CurrentValue;
+            OnChangeToken = config.OnChange(updatedConfig => CurrentConfig = updatedConfig);
         }
 
-        public ILogger CreateLogger(string categoryName) =>
-            _loggers.GetOrAdd(categoryName, name => new Logger(name, GetCurrentConfig));
+        public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => new Logger(name, GetCurrentConfig));
 
-        private Configuration GetCurrentConfig() => _currentConfig;
+        private Configuration GetCurrentConfig() => CurrentConfig;
 
         public void Dispose()
         {
             _loggers.Clear();
-            _onChangeToken.Dispose();
+            OnChangeToken.Dispose();
         }
     }
 }
