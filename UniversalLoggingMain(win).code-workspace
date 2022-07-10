@@ -1,19 +1,25 @@
 {
 	"folders": [
 		{
+			"path": "Client"
+		},
+		{
+			"path": "DemoConsole"
+		},
+		{
+			"path": "Functions"
+		},
+		{
 			"path": "LoggingClient"
 		},
 		{
 			"path": "logging-dashboard"
 		},
 		{
-			"path": "LoggingFunctions"
+			"path": "Storage"
 		},
 		{
-			"path": "LoggingFunctionsDemo"
-		},
-		{
-			"path": "LoggingTest"
+			"path": "Test"
 		}
 	],
 	"settings": {}
