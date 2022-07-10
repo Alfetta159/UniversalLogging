@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "LoggingClient"
+		},
+		{
+			"path": "logging-dashboard"
+		},
+		{
+			"path": "LoggingFunctions"
+		},
+		{
+			"path": "LoggingFunctionsDemo"
+		},
+		{
+			"path": "LoggingTest"
+		}
+	],
+	"settings": {}
+}
