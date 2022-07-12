@@ -10,15 +10,20 @@ namespace Meyer.Logging.Client
     {
         public static ILoggingBuilder AddUniversalLogger(this ILoggingBuilder builder, Action<Configuration> configure)
         {
-            builder.AddUniversalLogger();
-            builder.Services.Configure(configure);
+            builder
+                .AddUniversalLogger();
+
+            builder
+                .Services
+                .Configure(configure);
 
             return builder;
         }
 
         public static ILoggingBuilder AddUniversalLogger(this ILoggingBuilder builder)
         {
-            builder.AddConfiguration();
+            builder
+                .AddConfiguration();
 
             builder
                 .Services
@@ -29,27 +34,5 @@ namespace Meyer.Logging.Client
 
             return builder;
         }
-
-        //public static ILoggingBuilder AddColorConsoleLogger(this ILoggingBuilder builder)
-        //{
-        //    builder.AddConfiguration();
-
-        //    builder
-        //        .Services
-        //        .TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, LoggerProvider>());
-
-        //    LoggerProviderOptions
-        //        .RegisterProviderOptions<Configuration, LoggerProvider>(builder.Services);
-
-        //    return builder;
-        //}
-
-        //public static ILoggingBuilder AddColorConsoleLogger(this ILoggingBuilder builder, Action<Configuration> configure)
-        //{
-        //    builder.AddColorConsoleLogger();
-        //    builder.Services.Configure(configure);
-
-        //    return builder;
-        //}
     }
 }
