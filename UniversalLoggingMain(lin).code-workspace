@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "Client"
+		},
+		{
+			"path": "DemoConsole"
+		},
+		{
+			"path": "Functions"
+		},
+		{
+			"path": "LoggingClient"
+		},
+		{
+			"path": "logging-dashboard"
+		},
+		{
+			"path": "Storage"
+		},
+		{
+			"path": "Test"
+		},
+		{
+			"path": "Functions (copy)"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}
