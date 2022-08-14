@@ -16,15 +16,62 @@ namespace Meyer.Logging.Api;
         }
 
         [Function("LogEntry")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", "delete")] HttpRequestData req)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Admin, "get", "post", "delete", Route = null)] HttpRequest req, ILogger log)
         {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("Universal Logging starting a request...");
 
-            var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+            try
+            {
+                switch (req.Method)
+                {
+                    case "GET":
+                        return await GetEntriesAsync(req.GetQueryParameterDictionary());
+                    case "POST":
+                        await QueueEntryAsync(req);
+                        return new CreatedResult(String.Empty, null);
+                    case "DELETE":
+                        //TODO: determine environment
+                        return EnvironmentVariables.Environment == "Production"
+                            ? new ForbidResult()
+                            : await DeleteEntryAsync(req.GetQueryParameterDictionary());
+                    default:
+                        return new ObjectResult("Unsupported method") { StatusCode = 405, };
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                log.LogError(ex, "Universal Logging has had a error.");
 
-            response.WriteString("Welcome to Azure Functions!");
+                if (ex.HResult == 2)
+                    return new BadRequestObjectResult(ex.Message);
+                else
+                    throw;
+            }
+            catch (Exception ex)
+            {
+                log.LogCritical(ex, "Universal Logging has had a critical error.");
 
-            return response;
+                EmailClient.SendHelpDeskEmail(new Common.Storage.Email.CriticalExceptionMessage
+                {
+                    Application = "UNIVERSALLOGGING",
+                    Exception = ex,
+                    Subject = "Universal Logging has had a critical error.",
+                });
+
+                throw;
+            }
+
+
+            //string name = req.Query["name"];
+
+            //string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            //dynamic data = JsonConvert.DeserializeObject(requestBody);
+            //name ??= data?.name;
+
+            //string responseMessage = string.IsNullOrEmpty(name)
+            //    ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+            //    : $"Hello, {name}. This HTTP triggered function executed successfully.";
+
+            //return new OkObjectResult(responseMessage);
         }
     }

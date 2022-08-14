@@ -1,0 +1,28 @@
+{
+    "folders": [
+        {
+            "path": "Client"
+        },
+        {
+            "path": "DemoConsole"
+        },
+        {
+            "path": "Functions"
+        },
+        {
+            "path": "Functions (copy)"
+        },
+        {
+            "path": "LoggingClient"
+        },
+        {
+            "path": "Storage"
+        },
+        {
+            "path": "Test"
+        },
+        {
+            "path": "logging-dashboard"
+        }
+    ]
+}
